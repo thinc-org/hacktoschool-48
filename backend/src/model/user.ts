@@ -1,4 +1,4 @@
-class Authenticator {
+export default class Authenticator {
     private studentIds: Set<string>;
     private teacherIds: Set<string>;
   
