@@ -16,7 +16,4 @@ export default class Authenticator {
   public isTeacher(id: string): boolean {
     return this.teacherIds.has(new ObjectId(id));
   }
-}
-
-
-  
+}  
