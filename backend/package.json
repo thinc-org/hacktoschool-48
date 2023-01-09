@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "ts-node index.ts"
+    "start": "ts-node src/index.ts",
+    "dbstart": "ts-node src/services/mongoose.service.ts"
   },
   "author": "",
   "license": "ISC",

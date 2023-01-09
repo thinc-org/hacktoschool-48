@@ -2,7 +2,7 @@
 import * as mongoDB from "mongodb";
 import * as dotenv from "dotenv";
 // Global Variables
-export const collections: { student?: mongoDB.Collection,teacher?: mongoDB.Collection,admin?:mongoDB.Collection } = {}
+export const collections: { student?: mongoDB.Collection,teacher?: mongoDB.Collection,admin?:mongoDB.Collection, course?:mongoDB.Collection} = {}
 // Initialize Connection
 export async function connectToDatabase () {
     dotenv.config();
@@ -27,4 +27,74 @@ export async function connectToDatabase () {
   collections.admin = admincollection;
        
          console.log(`Successfully connected to database: ${db1.databaseName}`);
+
+  //usercollection access
+  const db2: mongoDB.Db = client.db(process.env.DB_COURSE);
  }
+
+ /* suggestion code from chatGPT
+ // External Dependencies
+import * as mongoDB from "mongodb";
+import * as dotenv from "dotenv";
+import * as mongoose from "mongoose";
+
+// Global Variables
+export const collections: {
+  student?: mongoose.Model<mongoose.Document>,
+  teacher?: mongoose.Model<mongoose.Document>,
+  admin?: mongoose.Model<mongoose.Document>,
+  course?: {
+    student?: mongoose.Model<mongoose.Document>,
+    teacher?: mongoose.Model<mongoose.Document>,
+    admin?: mongoose.Model<mongoose.Document>
+  }
+} = {};
+
+// Initialize Connection
+export async function connectToDatabase(): Promise<void> {
+  dotenv.config();
+  try {
+    // Validate environment variables
+    if (!process.env.DB_CONN_STRING) {
+      throw new Error("Missing DB_CONN_STRING environment variable");
+    }
+    if (!process.env.DB_NAME) {
+      throw new Error("Missing DB_NAME environment variable");
+    }
+    if (!process.env.DB_COURSE_NAME) {
+      throw new Error("Missing DB_COURSE_NAME environment variable");
+    }
+
+    // Connect to the database
+    const connection: mongoose.Connection = await mongoose.createConnection(process.env.DB_CONN_STRING, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      dbName: process.env.DB_NAME
+    });
+
+    // Initialize collections
+    collections.student = connection.model("student", new mongoose.Schema({}));
+    collections.teacher = connection.model("teacher", new mongoose.Schema({}));
+    collections.admin = connection.model("admin", new mongoose.Schema({}));
+
+    console.log(`Successfully connected to database: ${connection.name}`);
+
+    // Connect to the course database
+    const courseConnection: mongoose.Connection = await mongoose.createConnection(process.env.DB_CONN_STRING, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      dbName: process.env.DB_COURSE_NAME
+    });
+
+    // Initialize collections in the course database
+    collections.course = {};
+    collections.course.student = courseConnection.model("student", new mongoose.Schema({}));
+    collections.course.teacher = courseConnection.model("teacher", new mongoose.Schema({}));
+    collections.course.admin = courseConnection.model("admin", new mongoose.Schema({}));
+
+    console.log(`Successfully connected to database: ${courseConnection.name}`);
+  } catch (error) {
+    console.error(error);
+  }
+}
+*/
