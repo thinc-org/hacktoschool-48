@@ -11,7 +11,3 @@ export const userSchema: Schema = new Schema(
         courses: { type: [], required: true },
     }
 )
-
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;

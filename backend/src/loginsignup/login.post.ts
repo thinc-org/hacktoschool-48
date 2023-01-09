@@ -32,7 +32,7 @@ export async function login(req: Request, res: Response): Promise<void> {
   res.send({ sessionCode });
 }
 
-async function getUserByEmail(mail: string): Promise<Email | null> {
+async function getUserByEmail(email: string): Promise<Email | null> {
   // Query database for user with the given email
 }
 

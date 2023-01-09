@@ -1,20 +1,23 @@
 import * as argon2 from 'argon2';
-import User from '../model/user';
+import { userSchema } from '../model/user';
 import { Request, Response } from 'express';
+import { model, Schema } from 'mongoose';
 
-async function hashPassword(pass: string): Promise<string> {
+const User = model('User', userSchema);
+
+export async function hashPassword(pass: string): Promise<string> {
     // Hash the password
     const hash = await argon2.hash(pass);
     return hash;
   }
 
-async function signup(req: Request, res: Response): Promise<void> {
+export async function signup(req: Request, res: Response): Promise<void> {
     // Get info from the request body
     const { email, password, name, surname, id, courses } = req.body;
 
-    User.findOne((email)).exec((err, user) => {
+    User.findOne({email}).exec((err, User) => {
         // Check if user already exists
-        if(user) {
+        if(User) {
             return res.status(400).json({error: 'User already exists'});
         }
 
