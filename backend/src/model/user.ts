@@ -1,7 +1,7 @@
 import { model, Schema, Model, Document } from "mongoose";
 import mongoose from "mongoose";
 
-const userSchema: Schema = new Schema(
+export const userSchema: Schema = new Schema(
     {
         email: { type: String, required: true },
         password: { type: String, required: true },

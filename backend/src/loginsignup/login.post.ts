@@ -3,7 +3,7 @@ import * as uuid from 'uuid';
 import * as cookie from 'cookie';
 import { Request, Response } from 'express';
 
-async function login(req: Request, res: Response): Promise<void> {
+export async function login(req: Request, res: Response): Promise<void> {
   // Get email and password from the request body
   const { email, password } = req.body;
 
@@ -32,7 +32,7 @@ async function login(req: Request, res: Response): Promise<void> {
   res.send({ sessionCode });
 }
 
-async function getUserByEmail(email: string): Promise<Email | null> {
+async function getUserByEmail(mail: string): Promise<Email | null> {
   // Query database for user with the given email
 }
 
