@@ -5,12 +5,12 @@ export type User = InferSchemaType<typeof userSchema>;
 
 export const userSchema: Schema = new Schema(
     {
-        email: { type: String, required: true },
-        passwordHash: { type: String, required: true },
-        name: { type: String, required: true },
-        surname: { type: String, required: true },
-        id: { type: String, required: true },
-        courses: { type: [], required: true },
+        email: { type: String },
+        passwordHash: { type: [] },
+        name: { type: String },
+        surname: { type: String },
+        id: { type: String },
+        courses: {type: []},
 
     }
 )
