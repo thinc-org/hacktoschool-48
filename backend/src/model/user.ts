@@ -1,19 +1,15 @@
-import { ObjectId } from "mongodb";
+import { model, Schema, Model, Document } from "mongoose";
+import mongoose from "mongoose";
 
-export default class Authenticator {
-  private studentIds: Set<ObjectId>;
-  private teacherIds: Set<ObjectId>;
+const userSchema: Schema = new Schema(
+    {
+        email: { type: String, required: true },
+        password: { type: String, required: true },
+        name: { type: String, required: true },
+        surname: { type: String, required: true },
+        id: { type: String, required: true },
+        courses: { type: [], required: true },
+    }
+)
 
-  constructor(studentIds: string[], teacherIds: string[]) {
-    this.studentIds = new Set(studentIds.map(id => new ObjectId(id)));
-    this.teacherIds = new Set(teacherIds.map(id => new ObjectId(id)));
-  }
-
-  public isStudent(id: string): boolean {
-    return this.studentIds.has(new ObjectId(id));
-  }
-
-  public isTeacher(id: string): boolean {
-    return this.teacherIds.has(new ObjectId(id));
-  }
-}  
+module.exports = mongoose.model('User', userSchema)
