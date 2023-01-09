@@ -12,22 +12,25 @@ export default function landingPage() {
                     <div className={landingStyle.eCourse}>E-COURSE PLATFROM</div>
                     <div className={landingStyle.mainText}><span className="DelaFont">Learning and teaching online, made easy.</span></div>
                     <div className={landingStyle.normalText}>Practice your English and learn new things with the platfrom.</div>
-                    <div className={landingStyle.about}>
-                        <a href="#">About platform</a>
-                    </div>
+                    <a href="#">
+                        <div className={landingStyle.about}>
+                            About platform
+                        </div>
+                    </a>
+
                 </div>
 
                 <div className={landingStyle.botFrame}>
                     <div>
                         <div>
-                            <span><i class="ri-flashlight-fill"></i></span>
+                            <span><i className="ri-flashlight-fill"></i></span>
                             <span className="DelaFont">600+</span>
                         </div>
                         <div className={landingStyle.subTitle}>Popular words</div>
                     </div>
                     <div>
                         <div>
-                            <span><i class="ri-gamepad-line"></i></span>
+                            <span><i className="ri-gamepad-line"></i></span>
                             <span className="DelaFont">2+</span>
                         </div>
                         <div className={landingStyle.subTitle}>Mini-games</div>
@@ -41,6 +44,7 @@ export default function landingPage() {
                     src={person1}
                     className={landingStyle.personPic}
                     width={480}
+                    alt="person1"
                 ></Image>
             </div>
         </div>
