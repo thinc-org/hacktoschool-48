@@ -1,7 +1,16 @@
 import { Router } from 'express';
-import { login } from '../loginsignup/login.post';
-import { signup } from '../loginsignup/signup.post';
-export const router = Router();
+const express = require('express')
+const userRouter = require('./userloginsignup')
+import { Request,Response } from "express"
+import { Collection } from 'mongoose';
+import { Course } from "../model/courses"
 
-router.post("/login",login)
-router.post("/signup",signup)
+export const router = express.Router();
+
+const app = express();
+
+router.get("/" , async (req:Request , res:Response) => {
+    try {
+        const Courses = (await Collection.course!.findOne({}).toArray())
+    }
+});

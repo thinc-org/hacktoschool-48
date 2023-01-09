@@ -3,7 +3,7 @@ import mongoose from "mongoose"
 import cors from "cors"
 
 import { connectToDatabase } from "./services/mongoose.service"
-import { router } from "./routes/hacktoschool.routes";
+import { router } from "./routes/hacktoschool.routes"
 
 const app = express();
 const port = 3000;

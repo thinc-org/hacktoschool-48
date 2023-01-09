@@ -30,6 +30,4 @@ export async function signup(req: Request, res: Response): Promise<void> {
             })
         })
     })
-
-
 }

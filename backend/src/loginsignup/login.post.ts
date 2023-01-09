@@ -26,7 +26,7 @@ export async function login(req: Request, res: Response): Promise<void> {
   await setSessionCode(user.id, sessionCode);
   res.setHeader('Set-Cookie', cookie.serialize('session_code', sessionCode, {
     httpOnly: true,
-    maxAge: 60 * 60 * 24 * 7 // 1 week
+    maxAge: 60 * 60 * 24 // 1 day
   }));
 
   // Return the session code in the response
