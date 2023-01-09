@@ -1,4 +1,4 @@
-import { model, Schema, Model, Document, InferSchemaType } from "mongoose";
+import { model, Schema, Document, InferSchemaType } from "mongoose";
 import mongoose from "mongoose";
 
 export type Course = InferSchemaType<typeof courseSchema>;
@@ -11,4 +11,4 @@ export const courseSchema: Schema = new Schema(
     }
 )
 
-export const CourseModel = mongoose.model('Course', courseSchema);
+export const CourseModel = model('Course', courseSchema);

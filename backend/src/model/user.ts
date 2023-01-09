@@ -6,7 +6,7 @@ export type User = InferSchemaType<typeof userSchema>;
 export const userSchema: Schema = new Schema(
     {
         email: { type: String },
-        passwordHash: { type: [] },
+        passwordHash: { type: String },
         name: { type: String },
         surname: { type: String },
         id: { type: String },
