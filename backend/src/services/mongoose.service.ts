@@ -1,42 +1,30 @@
-import * as argon2 from "argon2";
-import mongoose from "mongoose";
+// External Dependencies
+import * as mongoDB from "mongodb";
 import * as dotenv from "dotenv";
-import { Request, Response } from "express";
+// Global Variables
+export const collections: { student?: mongoDB.Collection,teacher?: mongoDB.Collection,admin?:mongoDB.Collection } = {}
+// Initialize Connection
+export async function connectToDatabase () {
+    dotenv.config();
+ 
+    const client: mongoDB.MongoClient = new mongoDB.MongoClient(process.env.DB_CONN_STRING ||"");
+            
+    await client.connect();
 
-import { userSchema } from "../model/user";
-
-export const collections: { food?: mongoose.Collection, review?: mongoose.Collection } = {};
-
-export async function connectToDatabase() {
-  dotenv.config();
-
-  try {
-    await mongoose.connect(process.env.DB_CONN_STRING || "", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    });
-    
-
-    console.log(`Successfully connected to MongoDB at ${process.env.DB_CONN_STRING}`);
-
-    const db = mongoose.connection;
-
-    const foodCollection = db.collection("food");
-    collections.food = foodCollection;
-
-    const reviewCollection = db.collection("review");
-    collections.review = reviewCollection;
-
-    console.log(`Successfully accessed collections: ${foodCollection.collectionName}, ${reviewCollection.collectionName}`);
-  } catch (err) {
-    console.error(`Error connecting to MongoDB: ${err}`);
-    process.exit(1);
-  }
-}
-
-async function hashPassword(pass: string): Promise<string> {
-  // Hash the password
-  const hash = await argon2.hash(pass);
-  return hash;
-}
+    //usercollection access
+    const db1: mongoDB.Db = client.db(process.env.DB_USER);
+   //student collection
+    const studentcollection: mongoDB.Collection = db1.collection("student");
+ 
+  collections.student = studentcollection;
+    //teacher collection
+    const teachercollection: mongoDB.Collection = db1.collection("teacher");
+ 
+  collections.teacher = teachercollection;
+    //admin collection
+    const admincollection: mongoDB.Collection = db1.collection("admin");
+ 
+  collections.admin = admincollection;
+       
+         console.log(`Successfully connected to database: ${db1.databaseName}`);
+ }
