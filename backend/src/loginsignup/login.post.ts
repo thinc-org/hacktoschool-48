@@ -3,6 +3,12 @@ import { Request, Response } from 'express';
 import { User, UserModel } from '../model/user';
 import * as jwt from "jsonwebtoken";
 
+export interface TokenPayload {
+  id: string;
+  email: string;
+  role: string;
+}
+
 export async function login(req: Request, res: Response): Promise<void> {
   // Get email and password from the request body
   const { email, password } = req.body;

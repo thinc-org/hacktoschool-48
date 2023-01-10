@@ -2,81 +2,75 @@ import { Router } from 'express';
 const express = require('express')
 const userRouter = require('./userloginsignup')
 import { Request,Response } from "express"
-import { collections } from '../services/mongoose.service';
 import { MongooseError } from 'mongoose';
 import { getAllJSDocTagsOfKind } from 'typescript';
-import { User, UserModel } from '../model/user';
+import { UserModel } from '../model/user';
+import { CourseModel } from '../model/courses';
+import { TokenPayload } from '../loginsignup/login.post'
+import * as jwt from "jsonwebtoken";
 
 export const router = Router();
 
 const app = express();
 
-// // check user's role
-// router.use((req, res, next) => {
-//     const { _id } = req.session.user; // assuming you're using session to store the logged in user's ID
-//     collections?.user.findById(_id)
-//       .then(user => {
-//         req.user = user;
-//         next();
-//       })
-//       .catch(err => {
-//         res.status(500).send(err);
-//       });
-//   });
+// get 1 user
+router.get("/user/:id", async (req: Request, res: Response) => {
+    // Check if token exists
+    const token = req.headers.authorization;
+    if (!token) {
+        return res.status(401).json({ message: "No token found in Authorization header" });
+    }
 
+    // Validate token
+    let user: TokenPayload;
+    try {
+        user = jwt.verify(token, process.env.JWT_SECRET!) as TokenPayload;
+    } catch {
+        return res.status(401).json({ message: "Invalid token" });
+    }
 
-// userRouter.post();
+    const id = req?.params?.id;
 
-// // get 1 user
-// router.get("/user/:id", async (req: Request, res: Response) => {
-//     const id = req?.params?.id;
+    try{
+        const user = await UserModel.findOne({ id });
 
-//     try{
-//         const users = await collections?.user.find({});
+        res.status(200).send(user);
+    } catch (error) {
+        if (error instanceof MongooseError){
+            res.status(500).send(error.message);
+            return;
+        }     
+        else{
+            res.status(500).send("unknown error");
+            return;
+        }
+    }
+});
 
-//         res.status(200).send(users);
-//     } catch (error) {
-//         if (error instanceof MongooseError){
-//             res.status(500).send(error.message);
-//             return;
-//         }     
-//         else{
-//             res.status(500).send("unknown error");
-//             return;
-//         }
-//     }
-// });
+// get all courses
+router.get("/courses", async (req:Request , res:Response) => {
+    
+    // Check if token exists
+    const token = req.headers.authorization;
+    if (!token) {
+        return res.status(401).json({ message: "No token found in Authorization header" });
+    }
 
-// // get all courses
-// router.get("/courses", async (req:Request , res:Response) => {
-//     try {
-//         const courses = collections?.course;
-//         if (req.users.role === 'instructor') {
-//             collections?.course.find()
-//               .then(courses => {
-//                 res.send(courses);
-//               })
-//               .catch(err => {
-//                 res.status(500).send(err);
-//               });
-//           } else if (req.users.role === 'student') {
-//             collections?.course.find({}, { 
-//             }).then(courses => {
-//                 res.send(courses);
-//               })
-//               .catch(err => {
-//                 res.status(500).send(err);
-//               });
-//           }
-//     } catch (error) {
-//         if (error instanceof MongooseError){
-//             res.status(500).send(error.message);
-//             return;
-//         }     
-//         else{
-//             res.status(500).send("unknown error");
-//             return;
-//         }
-//     }  
-// });
+    // Validate token
+    let user: TokenPayload;
+    try {
+        user = jwt.verify(token, process.env.JWT_SECRET!) as TokenPayload;
+    } catch {
+        return res.status(401).json({ message: "Invalid token" });
+    }
 
+    // Check if user is instructor
+    // If not instructor, can view all properties except students enrolled
+    if (user.role !== "instructor") {
+        return CourseModel
+    }
+    // Instructors can view students enrolled
+    return CourseModel
+});
+
+//lines 70 & 73 undone maiwai laew

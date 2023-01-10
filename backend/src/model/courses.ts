@@ -1,9 +1,8 @@
-import { model, Schema, Document, InferSchemaType } from "mongoose";
 import mongoose from "mongoose";
 
-export type Course = InferSchemaType<typeof courseSchema>;
+export type Course = mongoose.InferSchemaType<typeof courseSchema>;
 
-export const courseSchema: Schema = new Schema(
+const courseSchema = new mongoose.Schema (
     {
         title: { type: String, required: true },
         description: { type: String, required: true },
@@ -11,5 +10,5 @@ export const courseSchema: Schema = new Schema(
         student: { type: [] }
     }
 )
-//function will be created after run mongoose.service.ts
-export const CourseModel = () => model('Course', courseSchema);
+
+export const CourseModel = mongoose.model('Course', courseSchema);
