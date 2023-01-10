@@ -11,74 +11,72 @@ export const router = Router();
 
 const app = express();
 
-// check user's role
-router.use((req, res, next) => {
-    const { _id } = req.session.user; // assuming you're using session to store the logged in user's ID
-    collections?.user.findById(_id)
-      .then(user => {
-        req.user = user;
-        next();
-      })
-      .catch(err => {
-        res.status(500).send(err);
-      });
-  });
+// // check user's role
+// router.use((req, res, next) => {
+//     const { _id } = req.session.user; // assuming you're using session to store the logged in user's ID
+//     collections?.user.findById(_id)
+//       .then(user => {
+//         req.user = user;
+//         next();
+//       })
+//       .catch(err => {
+//         res.status(500).send(err);
+//       });
+//   });
 
-userRouter.post();
 
-// get 1 user
-router.get("/user/:id", async (req: Request, res: Response) => {
-    const id = req?.params?.id;
+// userRouter.post();
 
-    try{
-        const users = await collections?.user.find({});
+// // get 1 user
+// router.get("/user/:id", async (req: Request, res: Response) => {
+//     const id = req?.params?.id;
 
-        res.status(200).send(users);
-    } catch (error) {
-        if (error instanceof MongooseError){
-            res.status(500).send(error.message);
-            return;
-        }     
-        else{
-            res.status(500).send("unknown error");
-            return;
-        }
-    }
-});
+//     try{
+//         const users = await collections?.user.find({});
 
-// get all courses
-router.get("/courses", async (req:Request , res:Response) => {
-    try {
-        const courses = collections?.course;
-        if (req.users.role === 'instructor') {
-            collections?.course.find()
-              .then(courses => {
-                res.send(courses);
-              })
-              .catch(err => {
-                res.status(500).send(err);
-              });
-          } else if (req.users.role === 'student') {
-            collections?.course.find({}, { 
-                title: 1, 
-                description: 1,
-                instructorName: 1 
-            }).then(courses => {
-                res.send(courses);
-              })
-              .catch(err => {
-                res.status(500).send(err);
-              });
-          }
-    } catch (error) {
-        if (error instanceof MongooseError){
-            res.status(500).send(error.message);
-            return;
-        }     
-        else{
-            res.status(500).send("unknown error");
-            return;
-        }
-    }  
-});
+//         res.status(200).send(users);
+//     } catch (error) {
+//         if (error instanceof MongooseError){
+//             res.status(500).send(error.message);
+//             return;
+//         }     
+//         else{
+//             res.status(500).send("unknown error");
+//             return;
+//         }
+//     }
+// });
+
+// // get all courses
+// router.get("/courses", async (req:Request , res:Response) => {
+//     try {
+//         const courses = collections?.course;
+//         if (req.users.role === 'instructor') {
+//             collections?.course.find()
+//               .then(courses => {
+//                 res.send(courses);
+//               })
+//               .catch(err => {
+//                 res.status(500).send(err);
+//               });
+//           } else if (req.users.role === 'student') {
+//             collections?.course.find({}, { 
+//             }).then(courses => {
+//                 res.send(courses);
+//               })
+//               .catch(err => {
+//                 res.status(500).send(err);
+//               });
+//           }
+//     } catch (error) {
+//         if (error instanceof MongooseError){
+//             res.status(500).send(error.message);
+//             return;
+//         }     
+//         else{
+//             res.status(500).send("unknown error");
+//             return;
+//         }
+//     }  
+// });
 

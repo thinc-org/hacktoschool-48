@@ -4,6 +4,7 @@ import * as cookie from 'cookie';
 import { Request, Response } from 'express';
 import { User, UserModel } from '../model/user';
 import { collections } from '../services/mongoose.service';
+import * as jwt from "jsonwebtoken"
 
 export async function login(req: Request, res: Response): Promise<void> {
   // Get email and password from the request body
@@ -22,16 +23,29 @@ export async function login(req: Request, res: Response): Promise<void> {
     throw new Error('Invalid email or password');
   }
 
-  // Generate a session code and set it in a cookie
-  const sessionCode = uuid.v4();
-  await setSessionCode(user.id, sessionCode);
-  res.setHeader('Set-Cookie', cookie.serialize('session_code', sessionCode, {
-    httpOnly: true,
-    maxAge: 60 * 60 * 24 // 1 day
-  }));
+  // // Generate a session code and set it in a cookie
+  // const sessionCode = uuid.v4();
+  // await setSessionCode(user.id, sessionCode);
+  // res.setHeader('Set-Cookie', cookie.serialize('session_code', sessionCode, {
+  //   httpOnly: true,
+  //   maxAge: 60 * 60 * 24 // 1 day
+  // }));
 
-  // Return the session code in the response
-  res.send({ sessionCode });
+//   // Return the session code in the response
+//   res.send({ sessionCode });
+// }
+const token = {
+  email: "test@example.com",
+  name: "test",
+  surname: "example",
+  id: "123456",
+}
+res.json({
+  token: jwt.sign(
+    token, "testexample"
+  )
+})
+
 }
 
 async function getUserByEmail(email: string): Promise<User | null | undefined> {
@@ -39,5 +53,7 @@ async function getUserByEmail(email: string): Promise<User | null | undefined> {
 }
 
 async function setSessionCode(userId: string, sessionCode: string): Promise<void> {
+  
   // Store the session code in the database
 }
+

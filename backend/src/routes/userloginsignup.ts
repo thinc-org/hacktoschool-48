@@ -1,7 +1,7 @@
 //import dependencies
 const express = require('express')
-const login = require('../loginsignup/login.post')
-const signup = require('../loginsignup/signup.post')
+import {login} from '../loginsignup/login.post'
+import {signup} from '../loginsignup/signup.post'
 
 export const userRouter = express.Router();
 
