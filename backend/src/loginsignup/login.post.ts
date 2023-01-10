@@ -2,7 +2,8 @@ import * as argon2 from 'argon2';
 import * as uuid from 'uuid';
 import * as cookie from 'cookie';
 import { Request, Response } from 'express';
-import { User, UserModel, userSchema } from '../model/user';
+import { User, UserModel } from '../model/user';
+import { collections } from '../services/mongoose.service';
 
 export async function login(req: Request, res: Response): Promise<void> {
   // Get email and password from the request body
@@ -33,8 +34,8 @@ export async function login(req: Request, res: Response): Promise<void> {
   res.send({ sessionCode });
 }
 
-async function getUserByEmail(email: string): Promise<User | null> {
-    return UserModel.findOne({ email })
+async function getUserByEmail(email: string): Promise<User | null | undefined> {
+    return collections?.user.findOne({ email })
 }
 
 async function setSessionCode(userId: string, sessionCode: string): Promise<void> {

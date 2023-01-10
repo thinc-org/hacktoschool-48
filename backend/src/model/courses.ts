@@ -8,7 +8,8 @@ export const courseSchema: Schema = new Schema(
         title: { type: String, required: true },
         description: { type: String, required: true },
         instructorName: { type: String, required: true },
+        student: { type: [] }
     }
 )
-
-export const CourseModel = model('Course', courseSchema);
+//function will be created after run mongoose.service.ts
+export const CourseModel = () => model('Course', courseSchema);

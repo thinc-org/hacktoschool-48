@@ -2,15 +2,19 @@ import { Router } from 'express';
 const express = require('express')
 const userRouter = require('./userloginsignup')
 import { Request,Response } from "express"
-import { Collection } from 'mongoose';
+import { collections } from '../services/mongoose.service';
 import { Course } from "../model/courses"
 
-export const router = express.Router();
+export const router = Router();
 
 const app = express();
 
-router.get("/" , async (req:Request , res:Response) => {
+userRouter.post();
+
+router.get("/user/id", )
+
+router.get("/courses" , async (req:Request , res:Response) => {
     try {
-        const Courses = (await Collection.course!.findOne({}).toArray())
+        const Courses = (await collections?.course.findOne({}).toArray())
     }
 });
