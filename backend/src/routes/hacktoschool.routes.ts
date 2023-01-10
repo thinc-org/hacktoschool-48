@@ -46,12 +46,11 @@ router.get("/user/:id", async (req: Request, res: Response) => {
     }
 });
 
- 
 // get all courses
 router.get("/courses", async (req:Request , res:Response) => {
     try {
         const courses = collections?.course;
-        if (req.user.role === 'instructor') {
+        if (req.users.role === 'instructor') {
             collections?.course.find()
               .then(courses => {
                 res.send(courses);
@@ -59,7 +58,7 @@ router.get("/courses", async (req:Request , res:Response) => {
               .catch(err => {
                 res.status(500).send(err);
               });
-          } else if (req.user.role === 'student') {
+          } else if (req.users.role === 'student') {
             collections?.course.find({}, { 
                 title: 1, 
                 description: 1,
@@ -82,4 +81,4 @@ router.get("/courses", async (req:Request , res:Response) => {
         }
     }  
 });
->>>>>>> 98bc5644d7256e7a7751cc136b32157d05df222c
+
