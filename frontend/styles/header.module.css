@@ -23,6 +23,14 @@
   margin: 0 15px;
 }
 
+.navbar {
+  display: flex;
+  align-items: center;
+}
+.navIcon {
+  display: none;
+}
+
 .leftNav {
   display: flex;
 }
@@ -60,6 +68,12 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 10px;
+}
+
+.loginText {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
 }
 
 .loginText:hover {
@@ -103,4 +117,34 @@
   margin-top: 2rem;
   border-radius: 12px;
   gap: 7px;
+}
+
+@media only screen and (max-width: 760px) {
+  .navIcon {
+    font-size: 30px;
+    width: 76px;
+    display: flex;
+    align-items: left;
+  }
+  .manu {
+    display: none;
+  }
+  .login .loginText {
+    display: none;
+  }
+  .signupbtn {
+    font-size: 14px;
+    width: 76px;
+    height: 30px;
+  }
+  .content {
+    align-items: center;
+  }
+  .leftNav {
+    flex-direction: row-reverse;
+  }
+  .logo {
+    border: none;
+    padding: 0;
+  }
 }
