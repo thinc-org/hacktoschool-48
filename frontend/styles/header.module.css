@@ -35,18 +35,20 @@
 
 .manu {
   padding-left: 16px;
+  padding-top: 6px;
   display: flex;
   color: #585858;
 }
 .manu ul {
   list-style: none;
   display: flex;
-  align-items: center;
 }
-
 .manu ul li {
   display: flex;
   margin: 0 10px;
+}
+.manu ul li a:hover {
+  color: black;
 }
 
 .login {
@@ -79,4 +81,26 @@
   color: #2b788b;
   background: #fff;
   border: 3px solid #2b788b;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  /* justify-content: center; */
+}
+.dropdown i {
+  padding: 2px;
+}
+.dropdownContent {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 4px;
+  z-index: 1;
+  margin-top: 2rem;
+  border-radius: 12px;
+  gap: 7px;
 }
