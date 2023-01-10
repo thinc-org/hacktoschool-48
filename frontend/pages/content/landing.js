@@ -22,7 +22,7 @@ export default function landingPage() {
                         <div className={landingStyle.normalText}>Practice your English and learn new things with the platfrom.</div>
                         <a href="#">
                             <div className={landingStyle.about}>
-                                About platform
+                                About platform <i className="ri-arrow-right-line"></i>
                             </div>
                         </a>
                     </div>
@@ -30,15 +30,15 @@ export default function landingPage() {
                     <div className={landingStyle.botFrame}>
                         <div>
                             <div>
-                                <span><i className="ri-flashlight-fill"></i></span>
-                                <span className="DelaFont">600+</span>
+                                <span className={landingStyle.toTheBlue}><i className="ri-flashlight-fill"></i></span>
+                                <span className="DelaFont">600<span className={landingStyle.toTheBlue}>+</span></span>
                             </div>
                             <div className={landingStyle.subTitle}>Popular words</div>
                         </div>
                         <div>
                             <div>
-                                <span><i className="ri-gamepad-line"></i></span>
-                                <span className="DelaFont">2+</span>
+                                <span className={landingStyle.toTheBlue}><i className="ri-gamepad-line"></i></span>
+                                <span className="DelaFont">2<span className={landingStyle.toTheBlue}>+</span></span>
                             </div>
                             <div className={landingStyle.subTitle}>Mini-games</div>
                         </div>
@@ -76,6 +76,9 @@ export default function landingPage() {
                 <div className={landingStyle.leftSide}>
                     <div className={landingStyle.mainText}><span className="DelaFont">Increase your vocabulary</span></div>
                     <div className={landingStyle.normalText}>Traditional and new effective approaches to word study</div>
+                    <div className={landingStyle.about}>
+                        Textbook<i className="ri-arrow-right-line"></i>
+                    </div>
                 </div>
                 <div className={landingStyle.sec3img}>
                     <Image
@@ -102,6 +105,9 @@ export default function landingPage() {
                 <div className={landingStyle.leftSide}>
                     <div className={landingStyle.mainText}><span className="DelaFont">Watch your progress every day</span></div>
                     <div className={landingStyle.normalText}>Save statistics on your achievements, words learned, and mistakes</div>
+                    <div className={landingStyle.about}>
+                        Statistics <i className="ri-arrow-right-line"></i>
+                    </div>
                 </div>
             </div>
 
