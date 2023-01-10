@@ -1,17 +1,21 @@
 import * as argon2 from 'argon2';
-import * as uuid from 'uuid';
-import * as cookie from 'cookie';
 import { Request, Response } from 'express';
 import { User, UserModel } from '../model/user';
-import { collections } from '../services/mongoose.service';
-import * as jwt from "jsonwebtoken"
+import * as jwt from "jsonwebtoken";
 
 export async function login(req: Request, res: Response): Promise<void> {
   // Get email and password from the request body
   const { email, password } = req.body;
 
-  // Look up the user by email
-  const user = await getUserByEmail(email);
+  // Validate input
+  if (!email || !password) {
+    return res
+      .status(400)
+      .json({ message: "`email` and `password` are required" });
+  }
+
+  // Check if user exists
+  const user = await UserModel.findOne({ email });
   if (!user) {
     throw new Error('Invalid email or password');
   }
@@ -34,26 +38,29 @@ export async function login(req: Request, res: Response): Promise<void> {
 //   // Return the session code in the response
 //   res.send({ sessionCode });
 // }
-const token = {
-  email: "test@example.com",
-  name: "test",
-  surname: "example",
-  id: "123456",
-}
-res.json({
-  token: jwt.sign(
-    token, "testexample"
-  )
-})
+
+// Generate token
+const token = jwt.sign(
+  {
+    email: user.email,
+    name: user.name,
+    surname: user.surname,
+    id: user.id,
+    role: user.role
+  },
+  process.env.JWT_SECRET!
+);
+
+return res.status(200).send({ token });
 
 }
 
-async function getUserByEmail(email: string): Promise<User | null | undefined> {
+/* async function getUserByEmail(email: string): Promise<User | null | undefined> {
     return collections?.user.findOne({ email })
 }
 
 async function setSessionCode(userId: string, sessionCode: string): Promise<void> {
   
-  // Store the session code in the database
-}
+  // Store the session code in the database */
+
 
