@@ -1,0 +1,34 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+
+  position: relative;
+  width: 100%;
+  height: 360px;
+
+  background: #f4f4f2;
+}
+
+.navitem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 32px;
+
+  width: 200px;
+  height: 208px;
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  z-index: 0;
+
+  font-weight: 600;
+}
+.navitem h3:hover {
+    color: #2B788B
+}
