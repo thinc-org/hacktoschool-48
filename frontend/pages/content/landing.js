@@ -16,7 +16,7 @@ export default function landingPage() {
             {/* Section 1 */}
             <div className={landingStyle.sec1}>
                 <div className={landingStyle.leftSide}>
-                    <div>
+                    <div className={landingStyle.upperFrane}>
                         <div className={landingStyle.eCourse}>E-COURSE PLATFROM</div>
                         <div className={landingStyle.mainText}><span className="DelaFont">Learning and teaching online, made easy.</span></div>
                         <div className={landingStyle.normalText}>Practice your English and learn new things with the platfrom.</div>
@@ -47,7 +47,7 @@ export default function landingPage() {
                 <div className={landingStyle.rightSide}>
                     <Image
                         src={person1}
-                        className={landingStyle.personPic}
+                        className={landingStyle.person1Pic}
                         width={480}
                         alt="person1"
                     ></Image>
@@ -59,13 +59,13 @@ export default function landingPage() {
                 <div>
                     <Image
                         src={person2}
-                        className={landingStyle.personPic}
+                        className={landingStyle.person2Pic}
                         width={480}
                         alt="person2"
                     >
                     </Image>
                 </div>
-                <div>
+                <div className={landingStyle.leftSide}>
                     <div className={landingStyle.mainText}><span className="DelaFont">Learn a language in a playful way</span></div>
                     <div className={landingStyle.normalText}>Make learning words more fun with mini-games</div>
                 </div>
@@ -73,14 +73,14 @@ export default function landingPage() {
 
             {/* Section 3 */}
             <div className={landingStyle.sec3}>
-                <div>
+                <div className={landingStyle.leftSide}>
                     <div className={landingStyle.mainText}><span className="DelaFont">Increase your vocabulary</span></div>
                     <div className={landingStyle.normalText}>Traditional and new effective approaches to word study</div>
                 </div>
                 <div className={landingStyle.sec3img}>
                     <Image
                         src={person3}
-                        className={landingStyle.personPic}
+                        className={landingStyle.person3Pic}
                         width={612}
                         alt="person3"
                     >
@@ -89,17 +89,17 @@ export default function landingPage() {
             </div>
 
             {/* Section 4 */}
-            <div className={landingStyle.sec2}>
+            <div className={landingStyle.sec4}>
                 <div>
                     <Image
                         src={person4}
-                        className={landingStyle.personPic}
+                        className={landingStyle.person4Pic}
                         width={530}
                         alt="person4"
                     >
                     </Image>
                 </div>
-                <div>
+                <div className={landingStyle.leftSide}>
                     <div className={landingStyle.mainText}><span className="DelaFont">Watch your progress every day</span></div>
                     <div className={landingStyle.normalText}>Save statistics on your achievements, words learned, and mistakes</div>
                 </div>
