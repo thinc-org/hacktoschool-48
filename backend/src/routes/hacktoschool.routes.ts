@@ -3,16 +3,30 @@ const express = require('express')
 const userRouter = require('./userloginsignup')
 import { Request,Response } from "express"
 import { collections } from '../services/mongoose.service';
-import { Course } from "../model/courses"
 import { MongooseError } from 'mongoose';
 import { getAllJSDocTagsOfKind } from 'typescript';
+import { User, UserModel } from '../model/user';
 
 export const router = Router();
 
 const app = express();
 
+// check user's role
+router.use((req, res, next) => {
+    const { _id } = req.session.user; // assuming you're using session to store the logged in user's ID
+    collections?.user.findById(_id)
+      .then(user => {
+        req.user = user;
+        next();
+      })
+      .catch(err => {
+        res.status(500).send(err);
+      });
+  });
+
 userRouter.post();
 
+// get 1 user
 router.get("/user/:id", async (req: Request, res: Response) => {
     const id = req?.params?.id;
 
@@ -32,9 +46,40 @@ router.get("/user/:id", async (req: Request, res: Response) => {
     }
 });
 
-router.get("/courses" , async (req:Request , res:Response) => {
+ 
+// get all courses
+router.get("/courses", async (req:Request , res:Response) => {
+    try {
+        const courses = collections?.course;
+        if (req.user.role === 'instructor') {
+            collections?.course.find()
+              .then(courses => {
+                res.send(courses);
+              })
+              .catch(err => {
+                res.status(500).send(err);
+              });
+          } else if (req.user.role === 'student') {
+            collections?.course.find({}, { 
+                title: 1, 
+                description: 1,
+                instructorName: 1 
+            }).then(courses => {
+                res.send(courses);
+              })
+              .catch(err => {
+                res.status(500).send(err);
+              });
+          }
+    } catch (error) {
+        if (error instanceof MongooseError){
+            res.status(500).send(error.message);
+            return;
+        }     
+        else{
+            res.status(500).send("unknown error");
+            return;
+        }
+    }  
 });
-
-router.post("/course" , async (req: Request , res: Response) => {
-
-})
+>>>>>>> 98bc5644d7256e7a7751cc136b32157d05df222c
