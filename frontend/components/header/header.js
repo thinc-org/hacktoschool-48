@@ -36,10 +36,10 @@ export default function header() {
                         <div className={headerStyles.navbar}>
                             <div className={headerStyles.manu}>
                                 <ul>
-                                    <li><Link href="#">
+                                    <li><Link href="/">
                                         Home
                                     </Link></li>
-                                    <li><Link href="#">
+                                    <li><Link href="/textbook">
                                         Textbook
                                     </Link></li>
                                     <li><Link href="#">
