@@ -34,3 +34,7 @@ router.get("/user/:id", async (req: Request, res: Response) => {
 
 router.get("/courses" , async (req:Request , res:Response) => {
 });
+
+router.post("/course" , async (req: Request , res: Response) => {
+
+})
