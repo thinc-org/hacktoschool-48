@@ -3,10 +3,10 @@ import Image from 'next/image';
 import landingStyle from '../../styles/landing.module.css';
 import 'remixicon/fonts/remixicon.css'
 
-import person1 from '../../asset/person1.png';
-import person2 from '../../asset/person2.png';
-import person3 from '../../asset/person3.png';
-import person4 from '../../asset/person4.png';
+import person1 from '../../asset/persons/person1.png';
+import person2 from '../../asset/persons/person2.png';
+import person3 from '../../asset/persons/person3.png';
+import person4 from '../../asset/persons/person4.png';
 
 
 
