@@ -60,7 +60,12 @@
   margin: 0 10px;
 }
 
-.signup {
+.loginText:hover {
+  color: #2b788b;
+  text-decoration: underline #2b788b;
+}
+
+.signupbtn {
   display: flex;
   text-align: center;
   color: #fff;
@@ -69,4 +74,9 @@
 
   background: #2b788b;
   border-radius: 12px;
+}
+.signupbtn:hover {
+  color: #2b788b;
+  background: #fff;
+  border: 3px solid #2b788b;
 }

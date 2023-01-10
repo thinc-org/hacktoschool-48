@@ -23,7 +23,9 @@ export default function header() {
 
                     <div className={headerStyles.login}>
                         <div className={headerStyles.loginText}><a href="#">Login</a></div>
-                        <div className={headerStyles.signup}><a href="#">Sign up</a></div>
+                        <a href="#">
+                            <div className={headerStyles.signupbtn}>Sign up</div>
+                        </a>
                     </div>
                 </div>
             </Container>
