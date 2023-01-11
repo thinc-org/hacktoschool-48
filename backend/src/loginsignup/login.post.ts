@@ -32,7 +32,7 @@ export async function login(req: Request, res: Response): Promise<void> {
 
   // Check if the provided password is correct
   const passwordHash = user.passwordHash;
-  const correctPassword = await argon2.verify(passwordHash!, password);
+  const correctPassword = await argon2.verify(passwordHash, password);
   if (!correctPassword) {
     throw new Error('Invalid email or password');
   }
