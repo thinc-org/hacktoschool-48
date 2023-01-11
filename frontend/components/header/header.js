@@ -11,6 +11,7 @@ export default function header() {
 
   const [isSignClicked, setSignClicked] = useState(false);
   const signToggle = () => setSignClicked(!isSignClicked);
+  const setSignFalse = () => setSignClicked(false);
 
   const [click, setClick] = React.useState(false);
   const handleClick = () => setClick(!click);
@@ -119,10 +120,10 @@ export default function header() {
               {/* {isSignClicked ? <p>True</p> : <p>False</p>} */}
               {isSignClicked && (
                 <div className={headerStyles.dropSignInContent}>
-                  <Link href="/std_signup">
+                  <Link href="/std_signup" onClick={setSignFalse}>
                     <div>For student</div>
                   </Link>
-                  <Link href="/ins_signup">
+                  <Link href="/ins_signup" onClick={setSignFalse}>
                     <div>For instructor</div>
                   </Link>
                 </div>
