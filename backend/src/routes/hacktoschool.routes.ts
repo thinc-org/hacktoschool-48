@@ -64,13 +64,14 @@ router.get("/courses", async (req:Request , res:Response) => {
         return res.status(401).json({ message: "Invalid token" });
     }
 
+    const courses = await CourseModel.find();
     // Check if user is instructor
     // If not instructor, can view all properties except students enrolled
     if (user.role !== "instructor") {
-        return CourseModel
+        return courses;
     }
     // Instructors can view students enrolled
-    return CourseModel
+    return courses;
 });
 
 //lines 70 & 73 undone maiwai laew
