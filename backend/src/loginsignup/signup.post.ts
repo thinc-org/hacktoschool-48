@@ -13,7 +13,7 @@ export async function signup(req: Request, res: Response): Promise<void> {
     const { email, password, name, surname, id, role } = req.body;
     
     // Validate input
-    if (!name || !email || !password || !role) {
+    if (!name || !email || !password || !surname || !id || !role) {
         res.status(400).json({ message: "`email`, `password`, `name`, `surname`, `id` and `role` are required" }).send();
     }
 
@@ -26,7 +26,7 @@ export async function signup(req: Request, res: Response): Promise<void> {
     // Create User
     const newUser = new UserModel({ 
         email, 
-        password: hashPassword(password), 
+        passwordHash: hashPassword(password), 
         name, 
         surname, 
         id, 
