@@ -119,10 +119,10 @@ export default function header() {
               {/* {isSignClicked ? <p>True</p> : <p>False</p>} */}
               {isSignClicked && (
                 <div className={headerStyles.dropSignInContent}>
-                  <Link href="#">
+                  <Link href="/std_signup">
                     <div>For student</div>
                   </Link>
-                  <Link href="#">
+                  <Link href="/ins_signup">
                     <div>For instructor</div>
                   </Link>
                 </div>
