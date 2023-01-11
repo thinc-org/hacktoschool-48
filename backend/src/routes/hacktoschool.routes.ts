@@ -64,12 +64,20 @@ router.get("/courses", async (req:Request , res:Response) => {
     } catch {
         return res.status(401).json({ message: "Invalid token" });
     }
+    function exceptStudent() {
 
+        const nonstudent = {
+            student: false
+        }
+        CourseModel.find({} ,nonstudent, function (err,nonStudent){
+            return nonStudent
+        });
+    }
     const courses = await CourseModel.find();
     // Check if user is instructor
     // If not instructor, can view all properties except students enrolled
     if (user.role !== "instructor") {
-        return courses;
+        return exceptStudent(courses);
     }
     // Instructors can view students enrolled
     return courses;
@@ -112,3 +120,5 @@ router.post("/course/:title", async (req: Request, res: Response) => {
         }
     }
 });
+
+
