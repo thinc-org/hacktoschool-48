@@ -2,18 +2,18 @@ import * as argon2 from 'argon2';
 import { UserModel } from '../model/user';
 import { Request, Response } from 'express';
 
-export async function hashPassword(pass: string): Promise<string> {
+export async function hashPassword(pass: string){
     // Hash the password
     const hash = await argon2.hash(pass);
     return hash;
   }
 
 // Get info from the request body
-export async function signup(req: Request, res: Response): Promise<void> {
+export async function signup(req: Request, res: Response){
     const { email, password, name, surname, id, role } = req.body;
     
     // Validate input
-    if (!name || !email || !password || !surname || !id || !role) {
+    if (!email || !password || !name || !surname || !id || !role) {
         res.status(400).json({ message: "`email`, `password`, `name`, `surname`, `id` and `role` are required" }).send();
     }
 
@@ -26,7 +26,7 @@ export async function signup(req: Request, res: Response): Promise<void> {
     // Create User
     const newUser = new UserModel({ 
         email, 
-        passwordHash: hashPassword(password), 
+        passwordHash: await hashPassword(password), 
         name, 
         surname, 
         id, 
