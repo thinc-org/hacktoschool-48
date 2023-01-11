@@ -9,7 +9,7 @@ export interface TokenPayload {
   role: string;
 }
 
-export async function login(req: Request, res: Response): Promise<void> {
+export async function login(req: Request, res: Response){
   // Get email and password from the request body
   const { email, password } = req.body;
 
@@ -58,7 +58,6 @@ const token = jwt.sign(
 );
 
  res.status(200).send({ token }).send();
-
 }
 
 /* async function getUserByEmail(email: string): Promise<User | null | undefined> {
