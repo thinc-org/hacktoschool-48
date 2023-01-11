@@ -92,16 +92,12 @@
   border-radius: 12px;
 }
 .signupbtn:hover {
+  cursor: pointer;
   color: #2b788b;
   background: #fff;
   border: 3px solid #2b788b;
 }
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-  /* justify-content: center; */
-}
 .dropdown i {
   padding: 2px;
 }
@@ -117,6 +113,23 @@
   margin-top: 2rem;
   border-radius: 12px;
   gap: 7px;
+}
+.dropSignInContent {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 4px;
+  z-index: 1;
+  margin-top: 7.8rem !important;
+  border-radius: 12px;
+  gap: 10px;
+  color: #585858;
+}
+.dropSignInContent div:hover {
+  color:black;
 }
 
 @media only screen and (max-width: 760px) {
