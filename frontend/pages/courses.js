@@ -36,6 +36,8 @@ const data = [
 
 export default function course() {
 
+    
+
     return (
         <div className={coursePageStyles.textbook}>
             <div className={coursePageStyles.topSection}>
