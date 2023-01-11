@@ -15,11 +15,7 @@ export async function login(req: Request, res: Response): Promise<void> {
 
   // Validate input
   if (!email || !password) {
-<<<<<<< HEAD
       res
-=======
-    res
->>>>>>> cb64147313ac48b8d795dd69b3f0747f0ef4a96e
       .status(400)
       .json({ message: "`email` and `password` are required" }).send();
   }
@@ -61,11 +57,7 @@ const token = jwt.sign(
   process.env.JWT_SECRET!
 );
 
-<<<<<<< HEAD
  res.status(200).send({ token }).send();
-=======
-res.status(200).send({ token }).send();
->>>>>>> cb64147313ac48b8d795dd69b3f0747f0ef4a96e
 
 }
 
