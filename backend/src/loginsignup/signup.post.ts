@@ -14,13 +14,13 @@ export async function signup(req: Request, res: Response): Promise<void> {
     
     // Validate input
     if (!name || !email || !password || !role) {
-        return res.status(400).json({ message: "`email`, `password`, `name`, `surname`, `id` and `role` are required" });
+        res.status(400).json({ message: "`email`, `password`, `name`, `surname`, `id` and `role` are required" }).send();
     }
 
     // Check if user already exists
     const user = await UserModel.findOne(({ email }));
     if (user) {
-        return res.status(400).json({error: 'User already exists'});
+        res.status(400).json({error: 'User already exists'}).send();
     }
 
     // Create User
