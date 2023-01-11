@@ -73,7 +73,7 @@ export default function header() {
                     <Link href="/">Home</Link>
                   </li>
                   <li>
-                    <Link href="/textbook">Textbook</Link>
+                    <Link href="/courses">Courses</Link>
                   </li>
                   <li>
                     <Link href="#">Statistics</Link>

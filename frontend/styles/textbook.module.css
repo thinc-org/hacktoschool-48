@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  height: 700px;
+  height: 100%;
 }
 
 .topSection {
@@ -229,4 +229,8 @@
   position: absolute;
   left: 130px;
   border: 2px;
+}
+
+.cardAlignment {
+  margin: 1rem 0 3rem 0;
 }
