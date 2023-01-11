@@ -71,8 +71,8 @@ async function _connectToDatabase() {
 
     // Initialize collections
     const collections = {
-      user: UserModel(),
-      course: CourseModel(),
+      user: UserModel,
+      course: CourseModel,
 
     };
 
