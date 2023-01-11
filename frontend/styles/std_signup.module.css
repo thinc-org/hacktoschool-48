@@ -78,9 +78,16 @@
 }
 
 .already {
-  margin-top: 9px;
+  margin-top: 12px;
 }
 .already a {
   font-weight: 600;
-  color:#2b788b;
+  color: #2b788b;
+}
+
+/* Login page */
+.loginForm {
+  width: 470px;
+  margin-top: 64px;
+  margin-left: 60px;
 }

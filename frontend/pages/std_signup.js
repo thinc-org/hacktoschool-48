@@ -16,7 +16,7 @@ export default function std_signup() {
             </Image>
             <div className={stdPageStyles.signupForm}>
                 <div className={stdPageStyles.fStd}>For Student</div>
-                <div className={stdPageStyles.signupText}>Sign Up</div>
+                <div className={stdPageStyles.signupText}>SIGN UP</div>
                 <form className={stdPageStyles.form}>
                     <label>
                         <p>Name</p>
@@ -24,17 +24,17 @@ export default function std_signup() {
                     </label>
                     <label>
                         <p>Surname</p>
-                        <input type="text" name="name" />
+                        <input type="text" name="surname" />
                     </label>
                     <label>
                         <p>Email Address</p>
-                        <input type="text" name="name" />
+                        <input type="text" name="email" />
                     </label>
                     <label>
                         <p>Create password</p>
-                        <input type="text" name="name" />
+                        <input type="text" name="password" />
                     </label>
-                    <input type="submit" id="submit" value="Submit"  />
+                    <input type="submit" id="submit" value="Submit" />
                 </form>
                 <div className={stdPageStyles.already}>
                     Already have an account? <Link href='#'>Login</Link>

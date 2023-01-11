@@ -107,7 +107,7 @@ export default function header() {
 
           <div className={headerStyles.login}>
             <div className={headerStyles.loginText}>
-              <Link href="#">
+              <Link href="/login">
                 <span>Log In</span>
                 <i className="ri-arrow-right-line"></i>
               </Link>
