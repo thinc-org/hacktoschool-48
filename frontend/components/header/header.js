@@ -9,16 +9,12 @@ export default function header() {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
+    const [isSignClicked, setSignClicked] = useState(false);
+    const signToggle = () => setSignClicked(!isSignClicked);
+
     const [click, setClick] = React.useState(false);
     const handleClick = () => setClick(!click);
     const setClickToFalse = () => setClick(false);
-
-    const router = useRouter()
-    useEffect(() => {
-        if (router.pathname === '/') {
-            setIsOpen(false);
-        }
-    }, [router.pathname])
 
     return (
         // <div>Header</div>
@@ -53,7 +49,7 @@ export default function header() {
                                         {
                                             isOpen && (
                                                 <ul className={headerStyles.dropdownContent}>
-                                                    <li className={headerStyles.contentItem}>
+                                                    <li>
                                                         <Link href="#">
                                                             <span>Sprint</span>
                                                             <i className="ri-arrow-right-line"></i>
@@ -81,9 +77,22 @@ export default function header() {
                                 <i className="ri-arrow-right-line"></i>
                             </Link>
                         </div>
-                        <Link href="#">
-                            <div className={headerStyles.signupbtn}>Sign up</div>
-                        </Link>
+
+                        <div>
+                            <div className={headerStyles.signupbtn} onClick={signToggle}>Sign up</div>
+                            {/* {isSignClicked ? <p>True</p> : <p>False</p>} */}
+                            {isSignClicked && (
+                                <div className={headerStyles.dropSignInContent}>
+                                    <Link href='#'>
+                                        <div>For student</div>
+                                    </Link >
+                                    <Link href='#'>
+                                        <div>For instructor</div>
+                                    </Link>
+                                </div>
+                            )
+                            }
+                        </div>
                     </div>
                 </div>
             </Container>

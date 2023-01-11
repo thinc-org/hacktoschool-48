@@ -5,7 +5,7 @@ export type User = mongoose.InferSchemaType<typeof userSchema>;
 const userSchema = new mongoose.Schema(
     {
         email: { type: String, required: true },
-        passwordHash: { type: String, required: true },
+        passwordHash: { type: String },
         name: { type: String, required: true },
         surname: { type: String, required: true },
         id: { type: String, required: true },

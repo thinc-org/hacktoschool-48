@@ -15,7 +15,11 @@ export async function login(req: Request, res: Response): Promise<void> {
 
   // Validate input
   if (!email || !password) {
+<<<<<<< HEAD
       res
+=======
+    res
+>>>>>>> cb64147313ac48b8d795dd69b3f0747f0ef4a96e
       .status(400)
       .json({ message: "`email` and `password` are required" }).send();
   }
@@ -28,7 +32,7 @@ export async function login(req: Request, res: Response): Promise<void> {
 
   // Check if the provided password is correct
   const passwordHash = user.passwordHash;
-  const correctPassword = await argon2.verify(passwordHash, password);
+  const correctPassword = await argon2.verify(passwordHash!, password);
   if (!correctPassword) {
     throw new Error('Invalid email or password');
   }
@@ -57,7 +61,11 @@ const token = jwt.sign(
   process.env.JWT_SECRET!
 );
 
+<<<<<<< HEAD
  res.status(200).send({ token }).send();
+=======
+res.status(200).send({ token }).send();
+>>>>>>> cb64147313ac48b8d795dd69b3f0747f0ef4a96e
 
 }
 
