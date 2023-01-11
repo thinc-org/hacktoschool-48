@@ -21,7 +21,7 @@ const data = [
     {
         image: img2,
         courseName: 'Advanced Mathematics',
-        level: 'Hard',
+        level: 'Medium',
         instructor: 'Mr. Lee and Ms. Kim',
         detail: 'Learn everything about advanced mathematics with proof of theorems and solution of exercises',
     },

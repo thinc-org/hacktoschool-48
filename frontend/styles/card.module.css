@@ -62,6 +62,32 @@
 
   border-radius: 4px;
 }
+.batchMedium {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 100%;
+  padding: 0 0.5rem;
+  background: #c4a24c;
+  color: #ffffff;
+  font-weight: 600;
+
+  border-radius: 4px;
+}
+.batchHard {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 100%;
+  padding: 0 0.5rem;
+  background: #cb5b43;
+  color: #ffffff;
+  font-weight: 600;
+
+  border-radius: 4px;
+}
 
 .insName {
   height: 21px;
