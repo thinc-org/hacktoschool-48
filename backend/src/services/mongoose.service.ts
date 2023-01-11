@@ -51,22 +51,12 @@ async function _connectToDatabase() {
     if (!process.env.DB_NAME) {
       throw new Error("Missing DB_NAME environment variable");
     }
-    if (!process.env.DB_COURSE_NAME) {
-      throw new Error("Missing DB_COURSE_NAME environment variable");
-    }
 
     // Connect to the database
     const connection: mongoose.Connection = await mongoose.createConnection(process.env.DB_CONN_STRING, {
       // useNewUrlParser: true,
       // useUnifiedTopology: true,
       dbName: process.env.DB_NAME
-    });
-
-    // Connect to the course database
-    const courseConnection: mongoose.Connection = await mongoose.createConnection(process.env.DB_CONN_STRING, {
-      // useNewUrlParser: true,
-      // useUnifiedTopology: true,
-      dbName: process.env.DB_COURSE_NAME
     });
 
     // Initialize collections
@@ -77,7 +67,6 @@ async function _connectToDatabase() {
     };
 
     console.log(`Successfully connected to database: ${connection.name}`);
-    console.log(`Successfully connected to database: ${courseConnection.name}`);
 
     return collections;
   } catch (error) {
