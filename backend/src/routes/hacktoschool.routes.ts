@@ -18,13 +18,14 @@ router.get("/user/:id", async (req: Request, res: Response) => {
     // Check if token exists
     const token = req.headers.authorization;
     if (!token) {
-        res.status(401).json({ message: "No token found in Authorization header" }).send();
+        return res.status(401).json({ message: "No token found in Authorization header" });
     }
 
     // Validate token
     let user: TokenPayload;
     try {
-        user = jwt.verify(token, process.env.JWT_SECRET!) as TokenPayload;
+        const payload = jwt.verify(token, process.env.JWT_SECRET!);
+        user = payload as TokenPayload;
     } catch {
         return res.status(401).json({ message: "Invalid token" });
     }
@@ -78,4 +79,4 @@ router.get("/courses", async (req:Request , res:Response) => {
 
 
 // student enroll course
-router.post()
+// router.post()

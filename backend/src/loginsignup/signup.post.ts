@@ -32,7 +32,7 @@ export async function signup(req: Request, res: Response){
         id, 
         role 
     });
-    await newUser.save((err, success) => {
+    newUser.save((err, success) => {
         if(err) {
             console.log(err);
             return res.status(401).json({error: 'Error signing up, please try again.'})
