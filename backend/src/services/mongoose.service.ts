@@ -53,7 +53,7 @@ async function _connectToDatabase() {
     }
 
     // Connect to the database
-    const connection: mongoose.Connection = await mongoose.createConnection(process.env.DB_CONN_STRING, {
+    const connection = await mongoose.connect(process.env.DB_CONN_STRING, {
       // useNewUrlParser: true,
       // useUnifiedTopology: true,
       dbName: process.env.DB_NAME
@@ -66,7 +66,7 @@ async function _connectToDatabase() {
 
     };
 
-    console.log(`Successfully connected to database: ${connection.name}`);
+    console.log(`Successfully connected to database`);
 
     return collections;
   } catch (error) {
