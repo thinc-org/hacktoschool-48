@@ -1,4 +1,4 @@
-/* import { Router } from 'express';
+import { Router } from 'express';
 const express = require('express')
 const userRouter = require('./userloginsignup')
 import { Request,Response } from "express"
@@ -75,4 +75,7 @@ router.get("/courses", async (req:Request , res:Response) => {
 });
 
 //lines 70 & 73 undone maiwai laew
- */
+
+
+// student enroll course
+router.post()
