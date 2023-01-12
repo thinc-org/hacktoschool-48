@@ -2,7 +2,7 @@ import * as argon2 from 'argon2';
 import { Request, Response } from 'express';
 import { User, UserModel } from '../model/user';
 import * as jwt from "jsonwebtoken";
-import { ObjectID } from 'typeorm';
+import { ObjectID } from "typeorm";
 
 export interface TokenPayload {
   _id: ObjectID;

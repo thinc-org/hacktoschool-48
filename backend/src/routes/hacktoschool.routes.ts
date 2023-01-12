@@ -136,7 +136,7 @@ router.get("/course/mycourses/:title", async (req: Request, res: Response) => {
 
 
 // student enroll in a course
-router.post("/course", async (req: Request, res: Response) => {
+router.post("/stucourse", async (req: Request, res: Response) => {
     // Check if token exists
     const token = req.headers.authorization;
     if (!token) {
@@ -173,7 +173,7 @@ router.post("/course", async (req: Request, res: Response) => {
 
 
 // instructor create course
-router.post("/course", async (req: Request, res: Response) => {
+router.post("/instcourse", async (req: Request, res: Response) => {
     // Check if token exists
     const token = req.headers.authorization;
     if (!token) {
