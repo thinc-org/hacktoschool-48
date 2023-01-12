@@ -81,7 +81,7 @@ export default function header() {
                     <Link href="/courses">Courses</Link>
                   </li>
                   <li>
-                    <Link href="#">Statistics</Link>
+                    <Link href="enrollment">Enrollment</Link>
                   </li>
                 </ul>
               </div>
