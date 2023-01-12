@@ -63,7 +63,6 @@ async function _connectToDatabase() {
     const collections = {
       user: UserModel,
       course: CourseModel,
-
     };
 
     console.log(`Successfully connected to database`);

@@ -65,11 +65,11 @@ router.get("/courses/:title", async (req:Request , res:Response) => {
     } catch {
         return res.status(401).json({ message: "Invalid token" });
     }
-
-    const title = req?.params?.title
-
-    const course = CourseModel.findOne({ title })
     
+    const title = req?.params?.title
+    
+    const course = CourseModel.findOne({ title })
+
     if (user.role !== "instructor") {
         const nonstuSchema = new CourseModel({
             title: {type: String},
@@ -79,6 +79,7 @@ router.get("/courses/:title", async (req:Request , res:Response) => {
         })
     return nonstuSchema;
     }
+    return course
     // Instructors can view students enrolled
 });
 
