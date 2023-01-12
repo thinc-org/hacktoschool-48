@@ -6,8 +6,8 @@ import headerStyles from "../../styles/header.module.css";
 import { useRouter } from "next/router";
 
 export default function header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen);
+  // const [isOpen, setIsOpen] = useState(false);
+  // const toggle = () => setIsOpen(!isOpen);
 
   const [isSignClicked, setSignClicked] = useState(false);
   const signToggle = () => setSignClicked(!isSignClicked);
@@ -17,21 +17,8 @@ export default function header() {
   const handleClick = () => setClick(!click);
   const setClickToFalse = () => setClick(false);
 
-  let menuRef = useRef();
+  // let menuRef = useRef();
   let signupRef = useRef();
-  // click outside to close Games
-  useEffect(() => {
-    let handler = (event) => {
-      if (!menuRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  });
 
   // click outside to close Sign Up
   useEffect(() => {
@@ -77,28 +64,6 @@ export default function header() {
                   </li>
                   <li>
                     <Link href="#">Statistics</Link>
-                  </li>
-                  <li ref={menuRef} className={headerStyles.dropdown}>
-                    <Link href="#" onClick={toggle}>
-                      <span>Games</span>
-                      <i className="ri-arrow-down-s-line"></i>
-                    </Link>
-                    {isOpen && (
-                      <ul className={headerStyles.dropdownContent}>
-                        <li>
-                          <Link href="#" className={headerStyles.dropdownItem}>
-                            <span>Sprint</span>
-                            <i className="ri-arrow-right-line"></i>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link href="#" className={headerStyles.dropdownItem}>
-                            <span>Audio-call</span>
-                            <i className="ri-arrow-right-line"></i>
-                          </Link>
-                        </li>
-                      </ul>
-                    )}
                   </li>
                 </ul>
               </div>

@@ -7,12 +7,9 @@ export default function navigation() {
         <div className={navStyles.nav}>
             <div className={navStyles.navitem}>
                 <Link href='/'><h3>Main</h3></Link>
-                <h3>Textbook</h3>
+                <Link href='/courses'><h3>Courses</h3></Link>
                 <h3>Statistics</h3>
-                <h3>Sprint</h3>
-                <h3>Audio-call</h3>
             </div>
-            
         </div>
     );
 }
