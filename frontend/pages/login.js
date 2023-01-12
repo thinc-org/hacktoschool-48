@@ -24,7 +24,7 @@ export default function login_signup() {
                     </label>
                     <label>
                         <p>Password</p>
-                        <input type="text" name="password" />
+                        <input type="password" name="password" />
                     </label>
                     <input type="submit" id="submit" value="Submit" />
                 </form>
