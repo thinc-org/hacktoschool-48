@@ -8,7 +8,7 @@ const courseSchema = new mongoose.Schema (
         description: { type: String, required: true },
         instructorName: { type: String, required: true },
         student: { type: [] },
-        level: { type: String, required:true }
+        level: { type: String, enum: ["easy", "medium", "hard"], required:true }
     }
 )
 
