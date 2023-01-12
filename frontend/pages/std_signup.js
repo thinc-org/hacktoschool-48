@@ -9,7 +9,7 @@ export default function std_signup() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
+        const data = new FormData(event.currentTarget.value);
 
         const jsonData = {
             name: data.get('name'),
@@ -51,7 +51,7 @@ export default function std_signup() {
                 alt="Student Picture"
             >
             </Image>
-            <div className={stdPageStyles.signupForm}>
+            <div className={stdPageStyles.signupForm} onSubmit={handleSubmit}>
                 <div className={stdPageStyles.fStd}>For Student</div>
                 <div className={stdPageStyles.signupText}>SIGN UP</div>
                 <form className={stdPageStyles.form}>
@@ -71,7 +71,7 @@ export default function std_signup() {
                         <p>Create password</p>
                         <input type="text" name="password" />
                     </label>
-                    <input type="submit" id="submit" value="Submit" />
+                    <input type="submit" id="submit" value="Submit"/>
                 </form>
                 <div className={stdPageStyles.already}>
                     Already have an account? <Link href='/login'>Login</Link>

@@ -52,8 +52,8 @@
   letter-spacing: -0.04em;
   color: #585858;
 }
-.form input[type="text"], 
-.form input[type='password'] {
+.form input[type="text"],
+.form input[type="password"] {
   height: 2.2rem;
   width: 100%;
   margin-bottom: 16px;
@@ -72,10 +72,15 @@
 .form input[type="submit"] {
   font-size: 1.5rem;
   height: 3rem;
-
+  cursor: pointer;
   border-style: none;
-  background-color: #2b788b;
+  color: #2b788b;
+  background: #c3dce3;
   border-radius: 12px;
+}
+.form input[type="submit"]:hover {
+  color: #ffffff;
+  background-color: #2b788b;
 }
 
 .already {
