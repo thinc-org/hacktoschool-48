@@ -29,7 +29,7 @@ export default function login_signup() {
                     <input type="submit" id="submit" value="Submit" />
                 </form>
                 <div className={PageStyles.already}>
-                    Already have an account? <Link href='#'>Login</Link>
+                    Need an account? <Link href='/std_signup'>Sign up</Link>
                 </div>
             </div>
         </div>
