@@ -16,7 +16,7 @@ const data = [
         courseName: 'Introduction to Programming',
         level: 'Easy',
         instructor: 'Mr. James Smith',
-        detail: 'Learn the basics of programming through HTML, CSS, Python, and JavaScript. Get extensive practice with hands-on exercises and projects that demonstrate your grasp of coding fundamentals, and build confidence in your ability to think and problem-solve like a programmer.',
+        detail: 'Learn HTML, CSS, Python, and JavaScript. Get projects that demonstrate your grasp of coding fundamentals, and build confidence in your ability to think and problem-solve like a programmer.',
     },
     {
         image: img2,
