@@ -43,23 +43,13 @@ export default function course() {
             <div className={coursePageStyles.topSection}>
                 <div className={coursePageStyles.whiteBox}>
                     <div className={coursePageStyles.leftSideBox}>
-                        <Link href='#'>
-                            <div className={coursePageStyles.leftSideText}>
-                                <div className={coursePageStyles.icon}>
-                                    <i className="ri-book-2-fill"></i>
-                                </div>
-                                <div>Courses</div>
+                        <div className={coursePageStyles.leftSideText}>
+                            <div className={coursePageStyles.icon}>
+                                <i className="ri-book-2-fill"></i>
                             </div>
-                        </Link>
-                        <hr id="hr"></hr>
-                        <Link href='#'>
-                            <div className={coursePageStyles.leftSideText}>
-                                <div className={coursePageStyles.icon}>
-                                    <i className="ri-book-open-fill"></i>
-                                </div>
-                                <div>Dictionary</div>
-                            </div>
-                        </Link>
+                            <div>Courses</div>
+                        </div>
+                        <hr className={coursePageStyles.hr}></hr>
 
                     </div>
                     <div className={coursePageStyles.rightSideBox}>

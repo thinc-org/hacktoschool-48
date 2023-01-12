@@ -86,13 +86,13 @@ export default function header() {
                     {isOpen && (
                       <ul className={headerStyles.dropdownContent}>
                         <li>
-                          <Link href="#">
+                          <Link href="#" className={headerStyles.dropdownItem}>
                             <span>Sprint</span>
                             <i className="ri-arrow-right-line"></i>
                           </Link>
                         </li>
                         <li>
-                          <Link href="#">
+                          <Link href="#" className={headerStyles.dropdownItem}>
                             <span>Audio-call</span>
                             <i className="ri-arrow-right-line"></i>
                           </Link>

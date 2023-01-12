@@ -37,7 +37,7 @@ export default function ins_signup() {
                     <input type="submit" id="submit" value="Submit" />
                 </form>
                 <div className={pageStyles.already}>
-                    Already have an account? <Link href='#'>Login</Link>
+                    Already have an account? <Link href='/login'>Login</Link>
                 </div>
             </div>
         </div>
