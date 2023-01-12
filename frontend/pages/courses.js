@@ -70,27 +70,18 @@ export default function course() {
 
                 <div className={coursePageStyles.levels}>
                     <div className={coursePageStyles.valid_levelItem}>
-                        <span>A1</span>
-                        <div className={coursePageStyles.valid_batchEasy}><p>Easy</p></div>
+                        <span>ALL</span>
                     </div>
                     <div className={coursePageStyles.levelItem}>
-                        <span>A2</span>
+                        <span>Easy</span>
                         <div className={coursePageStyles.batchEasy}><p>Easy</p></div>
                     </div>
                     <div className={coursePageStyles.levelItem}>
-                        <span>B1</span>
+                        <span>Medium</span>
                         <div className={coursePageStyles.batchMedium}><p>Medium</p></div>
                     </div>
                     <div className={coursePageStyles.levelItem}>
-                        <span>B2</span>
-                        <div className={coursePageStyles.batchMedium}><p>Medium</p></div>
-                    </div>
-                    <div className={coursePageStyles.levelItem}>
-                        <span>C1</span>
-                        <div className={coursePageStyles.batchHard}><p>Hard</p></div>
-                    </div>
-                    <div className={coursePageStyles.levelItem}>
-                        <span>C2</span>
+                        <span>Hard</span>
                         <div className={coursePageStyles.batchHard}><p>Hard</p></div>
                     </div>
                 </div>
