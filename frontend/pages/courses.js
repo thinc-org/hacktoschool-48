@@ -7,7 +7,6 @@ import Card from '../components/product_card/card';
 import img1 from '../asset/courses/courseimg1.jpg';
 import img2 from '../asset/courses/courseimg2.jpg';
 import img3 from '../asset/courses/courseimg3.jpg';
-import card from '../components/product_card/card';
 
 const data = [
     // Use alt+z to wrap the code (window), comand+z (macOs)
@@ -35,9 +34,6 @@ const data = [
 ]
 
 export default function course() {
-
-    
-
     return (
         <div className={coursePageStyles.textbook}>
             <div className={coursePageStyles.topSection}>
