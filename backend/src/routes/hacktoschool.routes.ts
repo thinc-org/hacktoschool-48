@@ -6,6 +6,7 @@ import { UserModel } from '../model/user';
 import { CourseModel } from '../model/courses';
 import { TokenPayload } from '../loginsignup/login.post'
 import * as jwt from "jsonwebtoken";
+import { countReset } from 'console';
 
 export const router = Router();
 
@@ -134,7 +135,7 @@ router.get("/course/mycourses/:title", async (req: Request, res: Response) => {
 
 
 // student enroll in a course
-router.post("/course/:title", async (req: Request, res: Response) => {
+router.post("/course", async (req: Request, res: Response) => {
     // Check if token exists
     const token = req.headers.authorization;
     if (!token) {
