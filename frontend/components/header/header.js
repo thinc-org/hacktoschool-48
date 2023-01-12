@@ -92,7 +92,7 @@ export default function header() {
             <div className={tokenExists ? "" : headerStyles.displayNone}>
               {/* {tokenExists ? <p>True</p> : <p>False</p>} */}
               <div className={headerStyles.userIcon}>
-                <Link href='/user_details'><i class="ri-account-circle-fill"></i></Link>
+                <Link href='/user_details'><i className="ri-account-circle-fill"></i></Link>
               </div>
               <div>
                 <span className={headerStyles.signoutbtn} onClick={signout}>Log out</span>
