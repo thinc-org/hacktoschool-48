@@ -72,7 +72,7 @@ router.get("/course", async (req:Request , res:Response) => {
         });
     } */
     const courses = await CourseModel.find().select("title description instructorName level");
-    return courses;
+    res.status(200).send(courses);
 });
 
 //lines 70 & 73 undone maiwai laew
@@ -194,10 +194,12 @@ router.post("/course", async (req: Request, res: Response) => {
     }
 
     // Create course
-    const { title, description, instructorName, level } = req.body;
+    const { title, description, level } = req.body;
+
+    const User = await UserModel.findOne({ id: user._id });
     
     // Validate input
-    if (!title || !description || !instructorName || !level) {
+    if (!title || !description || !level) {
         res.status(400).json({ message: "`title`, `description`, `instructorName` and `level` are required" }).send();
     }
 
@@ -210,7 +212,7 @@ router.post("/course", async (req: Request, res: Response) => {
     const newCourse = new CourseModel({
         title,
         description,
-        instructorName,
+        instructorName: User?.name,
         level
     });
     newCourse.save((err, success) => {
