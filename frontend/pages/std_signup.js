@@ -6,6 +6,43 @@ import stdPageStyles from '../styles/std_signup.module.css';
 import stdImage from '../asset/login/forstudent.png';
 
 export default function std_signup() {
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+
+        const jsonData = {
+            name: data.get('name'),
+            surname: data.get('surname'),
+            email: data.get('email'),
+            password: data.get('password'),
+        }
+        console.log(data.get("firstName"), data.get("lastName"),
+            data.get("email"), data.get("password"));
+        fetch('http://localhost:3000/std_signup', {
+            method: 'POST',
+            crossDomail: true,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify(jsonData),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === 201) {
+                    alert("register success")
+                    window.location = "/login"
+                } else {
+                    alert("register failed")
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
     return (
         <div className={stdPageStyles.stdPage}>
             <Image

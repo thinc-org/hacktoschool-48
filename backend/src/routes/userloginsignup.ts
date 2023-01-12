@@ -8,5 +8,5 @@ export const userRouter = express.Router();
 //using login function need to be use /login after api first
 userRouter.post("/login", login);
 //using signup function need to be use /signup after api first
-userRouter.post("/signup/student", signupStudent);
-userRouter.post("/signup/instructor", signupInstructor);
+userRouter.post("/std_signup", signupStudent);
+userRouter.post("/ins_signup", signupInstructor);
