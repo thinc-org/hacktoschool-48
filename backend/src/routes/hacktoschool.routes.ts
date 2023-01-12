@@ -7,6 +7,7 @@ import { CourseModel } from '../model/courses';
 import { TokenPayload } from '../loginsignup/login.post'
 import * as jwt from "jsonwebtoken";
 import { countReset } from 'console';
+import { userInfo } from 'os';
 
 export const router = Router();
 
@@ -30,9 +31,9 @@ router.get("/user/:id", async (req: Request, res: Response) => {
     const id = req?.params?.id;
 
     try{
-        const user = await UserModel.findOne({ id });
+        const User = await UserModel.findOne({ id });
 
-        res.status(200).send(user);
+        res.status(200).send(User);
     } catch (error) {
         if (error instanceof MongooseError){
             res.status(500).send(error.message);
@@ -94,7 +95,7 @@ router.get("/course/mycourses", async (req: Request, res: Response) => {
     }
 
     // Check if the user is instructor
-    const User = await UserModel.findOne({ id: user.id });
+    const User = await UserModel.findOne({ id: user._id });
     if (User?.role !== 'instructor') {
         return res.status(403).json({ message: "Only instructors can view their courses" });
     }
@@ -122,7 +123,7 @@ router.get("/course/mycourses/:title", async (req: Request, res: Response) => {
 
 
     // Check if the user is instructor
-    const User = await UserModel.findOne({ id: user.id });
+    const User = await UserModel.findOne({ id: user._id });
     if (User?.role !== 'instructor') {
         return res.status(403).json({ message: "Only instructors can view enrolled students" });
     }
@@ -154,7 +155,7 @@ router.post("/course", async (req: Request, res: Response) => {
     const title = req?.params?.title;
 
     try{
-        const User = await UserModel.findOne({ id: user.id });
+        const User = await UserModel.findOne({ id: user._id });
         const course = await CourseModel.findOne({ title });
         course?.student.push(User);
         

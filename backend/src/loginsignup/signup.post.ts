@@ -10,11 +10,11 @@ export async function hashPassword(pass: string){
 
 // Get info from the request body
 export async function signup(req: Request, res: Response){
-    const { email, password, name, surname, id, role } = req.body;
+    const { email, password, name, surname, role } = req.body;
     
     // Validate input
-    if (!email || !password || !name || !surname || !id || !role) {
-        res.status(400).json({ message: "`email`, `password`, `name`, `surname`, `id` and `role` are required" }).send();
+    if (!email || !password || !name || !surname || !role) {
+        res.status(400).json({ message: "`email`, `password`, `name`, `surname`, and `role` are required" }).send();
     }
 
     // Check if user already exists
@@ -29,7 +29,6 @@ export async function signup(req: Request, res: Response){
         passwordHash: await hashPassword(password), 
         name, 
         surname, 
-        id, 
         role 
     });
     newUser.save((err, success) => {

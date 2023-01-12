@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema(
         passwordHash: { type: String, required: true },
         name: { type: String, required: true },
         surname: { type: String, required: true },
-        id: { type: String, required: true },
         courses: {type: []},
         role: {type: String, enum: ["instructor", "student"], required: true}
 

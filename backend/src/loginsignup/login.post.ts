@@ -2,9 +2,10 @@ import * as argon2 from 'argon2';
 import { Request, Response } from 'express';
 import { User, UserModel } from '../model/user';
 import * as jwt from "jsonwebtoken";
+import { ObjectID } from 'typeorm';
 
 export interface TokenPayload {
-  id: string;
+  _id: ObjectID;
   email: string;
   role: string;
 }
@@ -48,10 +49,10 @@ export async function login(req: Request, res: Response){
 // Generate token
 const token = jwt.sign(
   {
+    _id: user._id,
     email: user.email,
     name: user.name,
     surname: user.surname,
-    id: user.id,
     role: user.role
   },
   process.env.JWT_SECRET!
