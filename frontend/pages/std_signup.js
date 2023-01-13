@@ -31,7 +31,7 @@ export default function std_signup() {
         })
             .then((response) => response.json())
             .then((data) => {
-                if (data.status === 201) {
+                if (data.message === "Signup success! Please signin") {
                     alert("Register success!")
                     window.location = "/login"
                 } else {
@@ -69,7 +69,7 @@ export default function std_signup() {
                     </label>
                     <label>
                         <p>Create password</p>
-                        <input type="text" name="password" required />
+                        <input type="password" name="password" required />
                     </label>
                     <input type="submit" id="submit" value="Submit" />
                 </form>
