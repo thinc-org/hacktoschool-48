@@ -7,6 +7,8 @@ import person1 from "../../asset/persons/person1.png";
 import person2 from "../../asset/persons/person2.png";
 import person3 from "../../asset/persons/person3.png";
 import person4 from "../../asset/persons/person4.png";
+import tree1 from '../../asset/images/tree-left-1.png';
+import tree2 from '../../asset/images/tree-right-1.png';
 
 export default function landingPage() {
   return (
@@ -58,8 +60,20 @@ export default function landingPage() {
         </div>
         <div className={landingStyle.rightSide}>
           <Image
+            src={tree1}
+            className={landingStyle.image1}
+            width={480}
+            alt="person1"
+          ></Image>
+          <Image
             src={person1}
             className={landingStyle.person1Pic}
+            width={480}
+            alt="person1"
+          ></Image>
+          <Image
+            src={tree2}
+            className={landingStyle.image2}
             width={480}
             alt="person1"
           ></Image>

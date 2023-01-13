@@ -47,6 +47,28 @@
   display: flex;
   justify-content: center;
   padding-top: 32px;
+
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.person1Pic {
+  position: relative;
+  top: 0;
+  left: -140px;
+}
+.image1 {
+  position: relative;
+  top: 10px;
+  left: 35px;
+  height: 330px;
+}
+.image2 {
+  position: absolute;
+  top: 150px;
+  left: 200px;
+  height: 350px;
+  width: 100%;
 }
 
 .eCourse {
@@ -93,7 +115,7 @@
 }
 
 .toTheBlue {
-  color:#2b788b;
+  color: #2b788b;
 }
 
 .botFrame {
@@ -255,7 +277,6 @@
     width: 470px;
     height: auto;
   }
-
 
   .sec4 {
     height: 700px;
