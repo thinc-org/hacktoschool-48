@@ -1,4 +1,3 @@
-import * as mongoDB from "mongodb";
 import * as dotenv from "dotenv";
 import * as mongoose from "mongoose";
 import { CourseModel } from "../model/courses";

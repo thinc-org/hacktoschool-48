@@ -8,7 +8,8 @@ export default function navigation() {
             <div className={navStyles.navitem}>
                 <Link href='/'><h3>Main</h3></Link>
                 <Link href='/courses'><h3>Courses</h3></Link>
-                <h3>Statistics</h3>
+
+                <Link href='/dashboard'><h3>Dashboard</h3></Link>
             </div>
         </div>
     );

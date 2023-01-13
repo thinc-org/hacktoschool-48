@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "ts-node src/index.ts",
-    "dbstart": "ts-node src/services/mongoose.service.ts"
+    "dbstart": "ts-node src/services/mongoose.service.ts",
+    "dev": "nodemon --exec ts-node src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "mongodb": "^3.7.3",
     "mongoose": "^6.8.3",
     "node": "^19.3.0",
+    "nodemon": "^2.0.20",
     "supertest": "^6.3.3",
     "typeorm": "^0.3.11",
     "uuid": "^9.0.0"

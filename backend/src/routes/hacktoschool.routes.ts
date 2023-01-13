@@ -130,7 +130,7 @@ router.get("/course/mycourses/:title", async (req: Request, res: Response) => {
 
     const title = req?.params?.title;
     const course = await CourseModel.findOne({ instructorName: User.name, title });
-    return course?.student;
+    return res.status(200).json(course?.student);
 })
 
 // get 1 user
@@ -193,8 +193,11 @@ router.post("/stucourse/:title", async (req: Request, res: Response) => {
     try{
         const User = await UserModel.findOne({ _id: user._id });
         const course = await CourseModel.findOne({ title });
-        User?.courses.push(course?._id)
-        course?.student.push(User);
+        User?.courses.push(course?._id);
+        course?.student.push(User?._id);
+        await User?.save();
+        await course?.save();
+        res.status(200).send('Enrolled successfully yayyyy!');
         
     } catch (error) {
         if (error instanceof MongooseError){
