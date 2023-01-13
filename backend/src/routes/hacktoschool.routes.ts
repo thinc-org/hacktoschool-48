@@ -12,7 +12,7 @@ import { userInfo } from 'os';
 export const router = Router();
 
 // get 1 user
-router.get("/user/:id", async (req: Request, res: Response) => {
+router.get("/user", async (req: Request, res: Response) => {
     // Check if token exists
     const token = req.headers.authorization;
     if (!token) {
@@ -28,12 +28,10 @@ router.get("/user/:id", async (req: Request, res: Response) => {
         return res.status(401).json({ message: "Invalid token" });
     }
 
-    const id = req?.params?.id;
-
     try{
-        const User = await UserModel.findOne({ _id: id });
+        const User = await UserModel.findOne({ _id: user._id });
 
-        res.status(200).send(User);
+        res.status(200).json(User);
     } catch (error) {
         if (error instanceof MongooseError){
             res.status(500).send(error.message);
