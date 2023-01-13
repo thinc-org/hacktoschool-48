@@ -1,0 +1,64 @@
+.Card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 2.5rem;
+  margin: 2rem 0 4rem 0;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 20vw;
+}
+
+.yourCourse {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 140%;
+  /* identical to box height, or 56px */
+
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 0.02em;
+
+  /* Primaty/Black */
+
+  color: #000000;
+}
+
+.createCourse {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 140%;
+  /* identical to box height, or 34px */
+
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 0.04em;
+
+  /* Primaty/Black */
+
+  color: #000000;
+}
+
+.rightSide {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  gap: 1.1rem;
+
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}

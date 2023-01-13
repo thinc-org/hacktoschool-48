@@ -30,11 +30,13 @@ export default function ins_signup() {
         })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data);
                 if (data.status === 201) {
                     alert("Register success!")
                     window.location = "/login"
                 } else {
                     alert("Register failed")
+                    window.location.reload();
                 }
             })
             .catch((error) => {

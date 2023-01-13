@@ -16,27 +16,26 @@ export async function login(req: Request, res: Response){
 
   // Validate input
   if (!email || !password) {
-      res
-      .status(400)
-      .json({ message: "`email` and `password` are required" }).send()
-      .set({'Location': '/login'});
+    return res
+    .status(400)
+    .json({ message: "`email` and `password` are required" });
   }
 
   // Check if user exists
   const user = await UserModel.findOne({ email });
   if (!user) {
-    res
+    return res
     .status(400)
-    .json({ message: "Invalid email or password" }).send();
+    .json({ message: "Invalid email or password" });
   }
 
   // Check if the provided password is correct
   const passwordHash = user?.passwordHash;
   const correctPassword = await argon2.verify(passwordHash!, password);
   if (!correctPassword) {
-    res
+    return res
     .status(400)
-    .json({ message: "Invalid email or password" }).send();
+    .json({ message: "Invalid email or password" });
   }
 
   // // Generate a session code and set it in a cookie
@@ -63,7 +62,7 @@ const token = jwt.sign(
   process.env.JWT_SECRET!
 );
 
- res.status(200).send({ token }).send();
+ res.status(200).send({ token });
 }
 
 /* async function getUserByEmail(email: string): Promise<User | null | undefined> {

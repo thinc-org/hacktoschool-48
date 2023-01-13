@@ -14,13 +14,13 @@ export async function signupStudent(req: Request, res: Response){
     
     // Validate input
     if (!email || !password || !name || !surname) {
-        res.status(400).json({ message: "`email`, `password`, `name`, and `surname` are required" }).send();
+        return res.status(400).json({ message: "`email`, `password`, `name`, and `surname` are required" });
     }
 
     // Check if user already exists
     const user = await UserModel.findOne(({ email }));
     if (user) {
-        res.status(400).json({error: 'User already exists'}).send();
+        return res.status(400).json({error: 'User already exists'});
     }
 
     // Create User
@@ -34,11 +34,11 @@ export async function signupStudent(req: Request, res: Response){
     newUser.save((err, success) => {
         if(err) {
             console.log(err);
-            return res.status(401).json({error: 'Error signing up, please try again.'})
+            return res.status(401).json({error: 'Error signing up, please try again.'});
         }
-        return res.status(201).json({
-            message: 'Signup success! Please signin'
-        })
+            return res.status(201).json({
+            message: 'Signup success! Please signin' 
+            });
     });
 };
 
@@ -48,13 +48,13 @@ export async function signupInstructor(req: Request, res: Response){
     
     // Validate input
     if (!email || !password || !name || !surname) {
-        res.status(400).json({ message: "`email`, `password`, `name`, and `surname` are required" }).send();
+        return res.status(400).json({ message: "`email`, `password`, `name`, and `surname` are required" });
     }
 
     // Check if user already exists
     const user = await UserModel.findOne(({ email }));
     if (user) {
-        res.status(400).json({error: 'User already exists'}).send();
+        return res.status(400).json({error: 'User already exists'});
     }
 
     // Create User
