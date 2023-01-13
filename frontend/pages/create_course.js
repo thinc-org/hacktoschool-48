@@ -12,7 +12,6 @@ export default function create_course() {
             title: data.get('c_title'),
             description: data.get('c_desc'),
             level: data.get('level'),
-            instructorName: data.get('instructorName'),
         }
         // const API_URL = "https://sour-times-scream-49-230-141-85.loca.lt/login"
         const API_URL = "http://localhost:4000/instcourse"
@@ -33,7 +32,7 @@ export default function create_course() {
                 console.log(data);
                 if (data.message === 'Course created!') {
                     alert("Course created!");
-                    window.location.pathname = "/";
+                    window.location.reload();
                 } else {
                     alert("Created failed.");
                 }
@@ -59,10 +58,7 @@ export default function create_course() {
                         <p>Course Description</p>
                         <input type="text" name="c_desc" />
                     </label>
-                    <label>
-                        <p>Instructor Name</p>
-                        <input type="text" name="instructorName" />
-                    </label>
+            
 
                     <div>
                         <label className={radio_button.container}>Easy
