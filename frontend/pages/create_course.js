@@ -12,10 +12,11 @@ export default function create_course() {
             title: data.get('c_title'),
             description: data.get('c_desc'),
             level: data.get('level'),
+            instructor,
         }
         // const API_URL = "https://sour-times-scream-49-230-141-85.loca.lt/login"
         const API_URL = "http://localhost:4000/instcourse"
-
+        const token = localStorage.getItem("token")
         fetch(API_URL, {
             method: 'POST',
             crossDomain: true,
@@ -23,6 +24,7 @@ export default function create_course() {
                 'Content-Type': 'application/json',
                 Accept: "application/json",
                 "Access-Control-Allow-Origin": "*",
+                Authorization: token
             },
             body: JSON.stringify(jsonData),
         })
@@ -72,7 +74,7 @@ export default function create_course() {
                             <span className={radio_button.checkmark}></span>
                         </label>
                     </div>
-                    <input type="submit" id="submit" value="Submit"/>
+                    <input type="submit" id="submit" value="Submit" />
                 </form>
             </div>
         </div>
