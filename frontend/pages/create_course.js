@@ -12,7 +12,7 @@ export default function create_course() {
             title: data.get('c_title'),
             description: data.get('c_desc'),
             level: data.get('level'),
-            instructor,
+            instructorName: data.get('instructorName'),
         }
         // const API_URL = "https://sour-times-scream-49-230-141-85.loca.lt/login"
         const API_URL = "http://localhost:4000/instcourse"
@@ -58,6 +58,10 @@ export default function create_course() {
                     <label>
                         <p>Course Description</p>
                         <input type="text" name="c_desc" />
+                    </label>
+                    <label>
+                        <p>Instructor Name</p>
+                        <input type="text" name="instructorName" />
                     </label>
 
                     <div>
