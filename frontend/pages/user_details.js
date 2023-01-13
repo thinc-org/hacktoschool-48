@@ -24,7 +24,7 @@ export default function user_details() {
   return (
     <div>
       User Details
-      {tokenExists && <div>Name: {data.name}</div>}
+      {/* {tokenExists && <div>Name: {data.name}</div>} */}
     </div>
   );
 }
