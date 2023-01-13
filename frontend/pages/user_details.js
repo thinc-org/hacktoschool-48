@@ -1,41 +1,45 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default function user_details() {
-  const showUserdetail = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+export default class UserDetail extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            userData: "",
+        }
+    }
 
-    const jsonData = {
-      email: data.get("email"),
-      name: data.get("name"),
-      surname: data.get("surname"),
-      courses: data.get("courses"),
-      role: data.get("role"),
-    };
-    console.log(
-      data.get("email"),
-      data.get("name"),
-      data.get("surname"),
-      data.get("courses"),
-      data.get("role")
-    );
+    componentDidMount() {
 
-    const API_URL = "http://localhost:4000/user";
+        fetch('http://localhost:4000/user', {
+            method: 'POST',
+            crossDomail: true,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({
+                token: window.localStorage.getItem("token"),
+            }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data, "userdata");
+                this.setState({ userData: data.data })
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
 
-    fetch(API_URL, {
-      method: "GET",
-      crossDomain: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(jsonData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data, "userDetails");
-      });
-  };
-  return <div>User details</div>;
+    render() {
+        return (
+            <div className="user-detail">
+                <div><h1>User : {this.state.userData.name} {this.state.userData.surname}</h1></div>
+                <div><h1>Email : {this.state.userData.email}</h1></div>
+            </div>
+                
+
+        );
+    }
 }
