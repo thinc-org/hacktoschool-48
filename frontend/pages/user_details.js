@@ -1,50 +1,30 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 
-export default class UserDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userData: "",
-    };
-  }
+export default function user_details() {
 
-  componentDidMount() {
-    const token = localStorage.getItem("token");
-    fetch("http://localhost:4000/user", {
-      method: "POST",
-      crossDomail: true,
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Authorization: token,
-      },
-      body: JSON.stringify({
-        token: window.localStorage.getItem("token"),
-      }),
-    })
-      .then((response) => response.json())
+  const [data, setData] = useState(null)
+  const [isLoading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setLoading(true)
+    fetch('http://localhost:4000/user')
+      .then((res) => res.json())
       .then((data) => {
-        console.log(data, "userdata");
-        this.setState({ userData: data.data });
+        setData(data)
+        setLoading(false)
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }
+  }, [])
 
-  render() {
-    return (
-      <div className="user-detail">
-        <div>
-          <h1>
-            User : {this.state.userData.name} {this.state.userData.surname}
-          </h1>
-        </div>
-        <div>
-          <h1>Email : {this.state.userData.email}</h1>
-        </div>
-      </div>
-    );
-  }
+  const [tokenExists, setTokenExists] = useState(false);
+  useEffect(() => {
+    // Perform localStorage action
+    localStorage.getItem('token') === null ? setTokenExists(false) : setTokenExists(true);
+  }, [])
+
+  return (
+    <div>
+      User Details
+      {tokenExists && <div>Name: {data.name}</div>}
+    </div>
+  );
 }
