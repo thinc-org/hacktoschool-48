@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../components/product_card/card';
 import img1 from '../asset/courses/courseimg1.jpg';
+import Link from 'next/link';
 
 import dashboardStyles from '../styles/dashboard.module.css';
 
@@ -20,14 +21,15 @@ export default function dashboard() {
         <div className={dashboardStyles.Card}>
             <div className={dashboardStyles.topSection}>
                 <span className={dashboardStyles.yourCourse}>Your Courses</span>
-                <div className={dashboardStyles.rightSide}>
-                    <i class="ri-add-circle-fill"></i>
-                    <span className={dashboardStyles.createCourse}>CREAT COURSE</span>
-                </div>
-                
+                <Link href={'/create_course'} className={dashboardStyles.rightSide}>
+                    <div className={dashboardStyles.rightSideItem}>
+                        <i class="ri-add-circle-fill"></i>
+                        <span className={dashboardStyles.createCourse}>CREAT COURSE</span>
+                    </div>
+                </Link>
             </div>
             <div>
-                <Card item={data[0]}/>
+                <Card item={data[0]} />
             </div>
         </div>
     );
