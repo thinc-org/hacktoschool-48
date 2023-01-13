@@ -1,6 +1,13 @@
 import React from "react";
 
 export default function user_details() {
+  const jsonData = {
+    email: data.get("email"),
+    name: data.get("name"),
+    surname: data.get("surname"),
+    courses: data.get("courses"),
+    role: data.get("role"),
+  };
   const API_URL = "http://localhost:4000/user";
 
   fetch(API_URL, {
