@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../components/product_card/card';
+import Card from '../components/product_card/card_ins';
 import img1 from '../asset/courses/courseimg1.jpg';
 import Link from 'next/link';
 
