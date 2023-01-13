@@ -1,0 +1,59 @@
+.createCoursePage {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+
+  /* width: 50vh; */
+  height: 600px;
+  padding-top: 3rem;
+  gap: 1.5rem;
+}
+
+.createCourse {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 140%;
+  display: flex;
+  align-items: flex-end;
+  letter-spacing: 0.02em;
+  color: #000000;
+}
+
+.form {
+  width: 45vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.form input[type="text"],
+.form input[type="password"] {
+  height: 2.2rem;
+  width: 100%;
+  margin-bottom: 16px;
+  padding-left: 0;
+  background: none;
+  font-size: 1.2em;
+  font-weight: 400;
+  color: black;
+  border: none;
+  border-bottom: 3px solid black;
+
+  outline-color: transparent;
+  outline-style: none;
+}
+.form input[type="submit"] {
+  font-size: 1.5rem;
+  height: 3rem;
+  cursor: pointer;
+  border-style: none;
+  color: #2b788b;
+  background: #c3dce3;
+  border-radius: 12px;
+}
+.form input[type="submit"]:hover {
+  color: #ffffff;
+  background-color: #2b788b;
+}
