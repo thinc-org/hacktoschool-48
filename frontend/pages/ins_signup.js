@@ -31,7 +31,7 @@ export default function ins_signup() {
             .then((response) => response.json())
             .then((data) => {
                 console.log(data);
-                if (data.status === 201) {
+                if (data.message === "Signup success! Please signin") {
                     alert("Register success!")
                     window.location = "/login"
                 } else {

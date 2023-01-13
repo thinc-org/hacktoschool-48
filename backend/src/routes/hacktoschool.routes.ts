@@ -12,7 +12,7 @@ import { userInfo } from 'os';
 export const router = Router();
 
 // get 1 user
-router.get("/user/:id", async (req: Request, res: Response) => {
+router.get("/user", async (req: Request, res: Response) => {
     // Check if token exists
     const token = req.headers.authorization;
     if (!token) {
@@ -28,12 +28,10 @@ router.get("/user/:id", async (req: Request, res: Response) => {
         return res.status(401).json({ message: "Invalid token" });
     }
 
-    const id = req?.params?.id;
-
     try{
-        const User = await UserModel.findOne({ _id: id });
+        const User = await UserModel.findOne({ _id: user._id }).select("email name surname courses role");
 
-        res.status(200).send(User);
+        res.status(200).json(User);
     } catch (error) {
         if (error instanceof MongooseError){
             res.status(500).send(error.message);
@@ -165,7 +163,7 @@ router.get("/course/mycourses/:title", async (req: Request, res: Response) => {
 
     const title = req?.params?.title;
     const course = await CourseModel.findOne({ instructorName: User.name, title });
-    return course?.student;
+    return res.status(200).json(course?.student);
 })
 
 // get 1 user
@@ -228,8 +226,11 @@ router.post("/stucourse/:title", async (req: Request, res: Response) => {
     try{
         const User = await UserModel.findOne({ _id: user._id });
         const course = await CourseModel.findOne({ title });
-        User?.courses.push(course?._id)
-        course?.student.push(User);
+        User?.courses.push(course?._id);
+        course?.student.push(User?._id);
+        await User?.save();
+        await course?.save();
+        res.status(200).send('Enrolled successfully yayyyy!');
         
     } catch (error) {
         if (error instanceof MongooseError){
