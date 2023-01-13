@@ -31,7 +31,7 @@ router.get("/user/:id", async (req: Request, res: Response) => {
     const id = req?.params?.id;
 
     try{
-        const User = await UserModel.findOne({ id });
+        const User = await UserModel.findOne({ _id: id });
 
         res.status(200).send(User);
     } catch (error) {
@@ -95,7 +95,7 @@ router.get("/course/mycourses", async (req: Request, res: Response) => {
     }
 
     // Check if the user is instructor
-    const User = await UserModel.findOne({ id: user._id });
+    const User = await UserModel.findOne({ _id: user._id });
     if (User?.role !== 'instructor') {
         return res.status(403).json({ message: "Only instructors can view their courses" });
     }
@@ -123,7 +123,7 @@ router.get("/course/mycourses/:title", async (req: Request, res: Response) => {
 
 
     // Check if the user is instructor
-    const User = await UserModel.findOne({ id: user._id });
+    const User = await UserModel.findOne({ _id: user._id });
     if (User?.role !== 'instructor') {
         return res.status(403).json({ message: "Only instructors can view enrolled students" });
     }
@@ -136,7 +136,7 @@ router.get("/course/mycourses/:title", async (req: Request, res: Response) => {
 
 
 // student enroll in a course
-router.post("/stucourse", async (req: Request, res: Response) => {
+router.post("/stucourse/:title", async (req: Request, res: Response) => {
     // Check if token exists
     const token = req.headers.authorization;
     if (!token) {
@@ -155,7 +155,7 @@ router.post("/stucourse", async (req: Request, res: Response) => {
     const title = req?.params?.title;
 
     try{
-        const User = await UserModel.findOne({ id: user._id });
+        const User = await UserModel.findOne({ _id: user._id });
         const course = await CourseModel.findOne({ title });
         course?.student.push(User);
         
@@ -196,7 +196,7 @@ router.post("/instcourse", async (req: Request, res: Response) => {
     // Create course
     const { title, description, level } = req.body;
 
-    const User = await UserModel.findOne({ id: user._id });
+    const User = await UserModel.findOne({ _id: user._id });
     
     // Validate input
     if (!title || !description || !level) {
