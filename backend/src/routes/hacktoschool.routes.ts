@@ -29,7 +29,7 @@ router.get("/user", async (req: Request, res: Response) => {
     }
 
     try{
-        const User = await UserModel.findOne({ _id: user._id }).select("email name surname courses role");
+        const User = await UserModel.findOne({ _id: user._id }).select("email name surname courses role -_id");
 
         res.status(200).json(User);
     } catch (error) {
