@@ -18,20 +18,25 @@ export async function login(req: Request, res: Response){
   if (!email || !password) {
       res
       .status(400)
-      .json({ message: "`email` and `password` are required" }).send();
+      .json({ message: "`email` and `password` are required" }).send()
+      .set({'Location': '/login'});
   }
 
   // Check if user exists
   const user = await UserModel.findOne({ email });
   if (!user) {
-    throw new Error('Invalid email or password');
+    res
+    .status(400)
+    .json({ message: "Invalid email or password" }).send();
   }
 
   // Check if the provided password is correct
-  const passwordHash = user.passwordHash;
-  const correctPassword = await argon2.verify(passwordHash, password);
+  const passwordHash = user?.passwordHash;
+  const correctPassword = await argon2.verify(passwordHash!, password);
   if (!correctPassword) {
-    throw new Error('Invalid email or password');
+    res
+    .status(400)
+    .json({ message: "Invalid email or password" }).send();
   }
 
   // // Generate a session code and set it in a cookie
@@ -49,11 +54,11 @@ export async function login(req: Request, res: Response){
 // Generate token
 const token = jwt.sign(
   {
-    _id: user._id,
-    email: user.email,
-    name: user.name,
-    surname: user.surname,
-    role: user.role
+    _id: user?._id,
+    email: user?.email,
+    name: user?.name,
+    surname: user?.surname,
+    role: user?.role
   },
   process.env.JWT_SECRET!
 );
