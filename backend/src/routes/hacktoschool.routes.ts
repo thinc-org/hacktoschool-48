@@ -46,6 +46,41 @@ router.get("/user/:id", async (req: Request, res: Response) => {
     }
 });
 
+// get 1 user
+router.get("/userdetail/:email", async (req: Request, res: Response) => {
+    // Check if token exists
+    const token = req.headers.authorization;
+    if (!token) {
+        return res.status(401).json({ message: "No token found in Authorization header" });
+    }
+
+    // Validate token
+    let user: TokenPayload;
+    try {
+        const payload = jwt.verify(token, process.env.JWT_SECRET!);
+        user = payload as TokenPayload;
+    } catch {
+        return res.status(401).json({ message: "Invalid token" });
+    }
+
+    const emailus = req?.params?.email;
+
+    try{
+        const Userdetail = await UserModel.findOne({email: emailus}).select("_id name surname email role")
+
+        res.status(200).send(Userdetail);
+    } catch (error) {
+        if (error instanceof MongooseError){
+            res.status(500).send(error.message);
+            return;
+        }     
+        else{
+            res.status(500).send("unknown error");
+            return;
+        }
+    }
+});
+
 // get all courses (show all except students enrolled)
 router.get("/course", async (req:Request , res:Response) => {
     
@@ -133,6 +168,42 @@ router.get("/course/mycourses/:title", async (req: Request, res: Response) => {
     return course?.student;
 })
 
+// get 1 user
+router.get("/mycourse/:id", async (req: Request, res: Response) => {
+    // Check if token exists
+    const token = req.headers.authorization;
+    if (!token) {
+        return res.status(401).json({ message: "No token found in Authorization header" });
+    }
+
+    // Validate token
+    let user: TokenPayload;
+    try {
+        const payload = jwt.verify(token, process.env.JWT_SECRET!);
+        user = payload as TokenPayload;
+    } catch {
+        return res.status(401).json({ message: "Invalid token" });
+    }
+
+    const emailstu = req?.params?.email;
+    try{
+        const User = await UserModel.findOne({email: emailstu})
+    if (User?.role === "student"){
+        const studentcourse = await UserModel.findOne({ emailstu }).select("courses")
+        res.status(200).send(studentcourse)
+    }
+        res.status(400).send("you are not a student :3");
+    } catch (error) {
+        if (error instanceof MongooseError){
+            res.status(500).send(error.message);
+            return;
+        }     
+        else{
+            res.status(500).send("unknown error");
+            return;
+        }
+    }
+});
 
 
 // student enroll in a course
@@ -157,6 +228,7 @@ router.post("/stucourse/:title", async (req: Request, res: Response) => {
     try{
         const User = await UserModel.findOne({ _id: user._id });
         const course = await CourseModel.findOne({ title });
+        User?.courses.push(course?._id)
         course?.student.push(User);
         
     } catch (error) {
@@ -225,3 +297,4 @@ router.post("/instcourse", async (req: Request, res: Response) => {
         })
     })
 });
+
