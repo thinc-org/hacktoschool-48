@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import coursePageStyles from '../styles/textbook.module.css';
 import 'remixicon/fonts/remixicon.css'
 import Link from 'next/link';
@@ -86,7 +86,7 @@ export default function course() {
             <div className={coursePageStyles.courseSection}>
                 {data.map((item) => (
                     <div className={coursePageStyles.cardAlignment}>
-                        <Card item={item}/>
+                        <Card item={item} />
                     </div>
                 ))}
             </div>
