@@ -273,13 +273,13 @@ router.post("/instcourse", async (req: Request, res: Response) => {
     
     // Validate input
     if (!title || !description || !level) {
-        res.status(400).json({ message: "`title`, `description`, `instructorName` and `level` are required" }).send();
+        return res.status(400).json({ message: "`title`, `description`, `instructorName` and `level` are required" });
     }
 
     // Check if user already exists
     const course = await CourseModel.findOne(({ title }));
     if (course) {
-        res.status(400).json({error: 'Course already exists'}).send();
+        return res.status(400).json({error: 'Course already exists'});
     }
     
     const newCourse = new CourseModel({
