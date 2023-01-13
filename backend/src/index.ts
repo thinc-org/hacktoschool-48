@@ -11,7 +11,7 @@ async function main() {
     dotenv.config();
     // Create and start express app
         const app = express();
-        const port = 3000;
+        const port = 4000;
 
     // Connect mongoose to DB
     // await mongoose.connect(process.env.DB_CONN_STRING!)

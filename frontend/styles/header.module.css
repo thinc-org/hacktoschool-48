@@ -65,8 +65,9 @@
 }
 .login div {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   margin: 0 10px;
 }
 
@@ -103,7 +104,7 @@
 }
 .dropdownContent {
   display: none;
-  flex-direction: column;
+  flex-direction: column !important;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
@@ -119,20 +120,60 @@
 }
 .dropSignInContent {
   display: none;
-  flex-direction: column;
+  flex-direction: column !important;
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   padding: 12px 4px;
   z-index: 1;
-  margin-top: 7.8rem !important;
+  margin-top: 8.4rem !important;
   border-radius: 12px;
   gap: 10px;
   color: #585858;
 }
 .dropSignInContent div:hover {
-  color:black;
+  color: black;
+}
+
+/* If login success */
+.loginSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.userIcon {
+  padding-top: 12px;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+.signoutbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 90px;
+  height: 36px;
+  cursor: pointer;
+
+  background: #d43a3a;
+  border-radius: 12px;
+}
+.signoutbtn:hover {
+  cursor: pointer;
+  color: #d43a3a;
+  background: #fff;
+  border: 3px solid #d43a3a;
+}
+
+.displayNone {
+  display: none !important;
+}
+
+.hr {
+  width: 70%;
+  background-color: black;
+  /* transform: rotate(90deg); */
 }
 
 @media only screen and (max-width: 760px) {

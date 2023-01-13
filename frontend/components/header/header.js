@@ -3,11 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Container } from "reactstrap";
 import headerStyles from "../../styles/header.module.css";
-import { useRouter } from "next/router";
 
 export default function header() {
-  // const [isOpen, setIsOpen] = useState(false);
-  // const toggle = () => setIsOpen(!isOpen);
 
   const [isSignClicked, setSignClicked] = useState(false);
   const signToggle = () => setSignClicked(!isSignClicked);
@@ -33,6 +30,27 @@ export default function header() {
       document.removeEventListener("mousedown", signuphandler);
     };
   });
+
+  const [tokenExists, setTokenExists] = useState(false);
+  useEffect(() => {
+    // Perform localStorage action
+    localStorage.getItem('token') === null ? setTokenExists(false) : setTokenExists(true);
+  }, [])
+
+  const signout = () => {
+    localStorage.removeItem('token');
+    location.reload();
+  }
+
+  // const tokenExists = () => {
+  //   if (typeof window !== 'undefined') {
+  //     console.log('You are on the browser')
+  //     // 👉️ can use localStorage here
+    
+  //     return localStorage.getItem('token');
+  //   }
+  //   else return localStorage.getItem('token');
+  // }
 
   return (
     // <div>Header</div>
@@ -63,7 +81,7 @@ export default function header() {
                     <Link href="/courses">Courses</Link>
                   </li>
                   <li>
-                    <Link href="#">Statistics</Link>
+                    <Link href="enrollment">Enrollment</Link>
                   </li>
                 </ul>
               </div>
@@ -71,28 +89,43 @@ export default function header() {
           </div>
 
           <div className={headerStyles.login}>
-            <div className={headerStyles.loginText}>
-              <Link href="/login">
-                <span>Log In</span>
-                <i className="ri-arrow-right-line"></i>
-              </Link>
+            <div className={tokenExists ? "" : headerStyles.displayNone}>
+              {/* {tokenExists ? <p>True</p> : <p>False</p>} */}
+              <div className={headerStyles.userIcon}>
+                <Link href='/user_details'><i className="ri-account-circle-fill"></i></Link>
+              </div>
+              <div>
+                <span className={headerStyles.signoutbtn} onClick={signout}>Log out</span>
+              </div>
             </div>
 
-            <div ref={signupRef}>
-              <div className={headerStyles.signupbtn} onClick={signToggle}>
-                Sign up
-              </div>
-              {/* {isSignClicked ? <p>True</p> : <p>False</p>} */}
-              {isSignClicked && (
-                <div className={headerStyles.dropSignInContent}>
-                  <Link href="/std_signup" onClick={setSignFalse}>
-                    <div>For student</div>
-                  </Link>
-                  <Link href="/ins_signup" onClick={setSignFalse}>
-                    <div>For instructor</div>
+            <div className={tokenExists ? headerStyles.displayNone : ""}>
+              <div className={headerStyles.loginSection}>
+                <div className={headerStyles.loginText}>
+                  <Link href="/login">
+                    <span>Log In</span>
+                    <i className="ri-arrow-right-line"></i>
                   </Link>
                 </div>
-              )}
+
+                <div ref={signupRef}>
+                  <div className={headerStyles.signupbtn} onClick={signToggle}>
+                    Sign up
+                  </div>
+                  {/* {isSignClicked ? <p>True</p> : <p>False</p>} */}
+                  {isSignClicked && (
+                    <div className={headerStyles.dropSignInContent}>
+                      <Link href="/std_signup" onClick={setSignFalse}>
+                        <div>For student</div>
+                      </Link>
+                      <hr className={headerStyles.hr}></hr>
+                      <Link href="/ins_signup" onClick={setSignFalse}>
+                        <div>For instructor</div>
+                      </Link>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </div>

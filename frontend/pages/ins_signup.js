@@ -6,6 +6,42 @@ import pageStyles from '../styles/std_signup.module.css';
 import insImage from '../asset/login/forinstructor.png';
 
 export default function ins_signup() {
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+
+        const jsonData = {
+            name: data.get('name'),
+            surname: data.get('surname'),
+            email: data.get('email'),
+            password: data.get('password'),
+        }
+        console.log(data.get("name"), data.get("name"),
+            data.get("email"), data.get("password"));
+        fetch('http://localhost:4000/ins_signup', {
+            method: 'POST',
+            crossDomail: true,
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: "application/json",
+                "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify(jsonData),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === 201) {
+                    alert("Register success!")
+                    window.location = "/login"
+                } else {
+                    alert("Register failed")
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+
     return (
         <div className={pageStyles.stdPage}>
             <Image
@@ -17,7 +53,7 @@ export default function ins_signup() {
             <div className={pageStyles.signupForm}>
                 <div className={pageStyles.fStd}>For Instructor</div>
                 <div className={pageStyles.signupText}>SIGN UP</div>
-                <form className={pageStyles.form}>
+                <form className={pageStyles.form} onSubmit={handleSubmit}>
                     <label>
                         <p>Name</p>
                         <input type="text" name="name" />
