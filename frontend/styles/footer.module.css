@@ -19,18 +19,11 @@
   gap: 10px;
 }
 
-.image1 {
-  width: 120px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 12%;
-}
-
-.image2 {
+.image {
   width: 60px;
   height: 60px;
   object-fit: cover;
-  border-radius: 12%;
+  border-radius: 50%;
 }
 
 .section,

@@ -46,7 +46,7 @@ export default function footer() {
           <div className={footerStyles.lowermenu}>
             <Link href="https://thinc.in.th/">
               <Image
-                className={footerStyles.image1}
+                className={footerStyles.image}
                 src={Thinc}
                 // className={image}
                 alt="Thinc icon"
@@ -55,7 +55,7 @@ export default function footer() {
 
             <Link href="https://cleverse.com/">
               <Image
-                className={footerStyles.image2}
+                className={footerStyles.image}
                 src={Cleverse}
                 // className={image}
                 alt="Cleverse icon"
